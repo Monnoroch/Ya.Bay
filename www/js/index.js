@@ -66,9 +66,45 @@ var app = {
             $.mobile.defaultPageTransition = "slide";
         });
 
+        var filter = [];
+
         $(".b-popcat-table__item_type_phone").click(function(){
             $.mobile.changePage("#item_type_phone_menu");
-        })
+            fillList(data.filter(function(val){ return val.categ === "phones"}), $("#item_type_phone_menu > .ui-content > .b-serp"));
+        });
+
+        function os_click_handler(os) {
+            return function(e) {
+                $("#item_type_phone_menu > .ui-content > .b-serp").empty();
+                $(this).toggleClass("activated");
+                
+                if($(this).hasClass('activated')) {
+                    filter.push(os);
+                } else {
+                    filter.splice( filter.indexOf(os), 1 );
+                }
+
+                console.log(filter);
+
+                var filtered_data
+                if(filter.length == 0)
+                    filtered_data = data;
+                else {
+                        filtered_data = data.filter(function(val) {
+                        console.log(val.os)
+                        console.log(filter.indexOf(val.os))
+                        return filter.indexOf(val.os) !== -1;
+                    });
+                }
+
+                fillList(filtered_data, $("#item_type_phone_menu > .ui-content > .b-serp"));
+            }
+        }
+
+        $(".b-popcat-table__item_type_android").click(os_click_handler("android"));
+        $(".b-popcat-table__item_type_ios").click(os_click_handler("ios"));
+        $(".b-popcat-table__item_type_blackberry").click(os_click_handler("blackberry")); 
+        $(".b-popcat-table__item_type_windows").click(os_click_handler("windows")); 
     },
     // deviceready Event Handler
     //
@@ -79,6 +115,7 @@ var app = {
 
         setTimeout(function() {
             $.mobile.changePage("#main_menu");
+            fillList(data, $("#main_menu > .ui-content > .b-serp"));
         }, 100);
         
         $( "#swipe-region" ).on( "swiperight", function(e) {

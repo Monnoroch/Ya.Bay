@@ -1,5 +1,5 @@
 function createItem(data) {
-	var cont = $("div", {class:"b-serp-item"});
+	var cont = $("<div>", {class:"b-serp-item"});
 
 	cont.append('<a class="b-link" href="#' + data.id + '">' + 
 			'<i class="b-icon" style="background-image: url(' + data.img + ')"></i>' + 
