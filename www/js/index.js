@@ -377,6 +377,25 @@ var app = {
         }
         return result;
     },
-    
 
+    sendBid: function(userid, token, itemid, bid) {
+        $.ajax({
+          type: "POST",
+          url: "http://money.yandex.ru/api/request-payment",
+          data: {
+            pattern_id: "p2p",
+            to: 410012119774823,
+            amount: bid,
+            message: ,
+            comment: ,
+            test_payment: true,
+            test_result: "success"
+          },
+          headers: {
+              "Authorization": "Bearer " + token
+          },
+          success: success,
+          // dataType: dataType
+        });
+    }
 };
