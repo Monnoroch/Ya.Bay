@@ -69,6 +69,11 @@ var app = {
     onDeviceReady: function() {
         var self = this;
 
+        setTimeout(function() {
+            $("#landing").hide();
+            $("#mapapp").show();
+        }, 5000);
+
         //this.onOrientationChange();
     },
     onOrientationChange: function() {
