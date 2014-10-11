@@ -21,6 +21,8 @@
 }
 
 body {
+    max-width: 100%;
+    overflow-x: hidden;
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
@@ -120,10 +122,10 @@ h1 {
     margin-bottom: 5px;
     padding-bottom: 100%;
     /*background-color: #a3b3c6;*/
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,.3);
-    box-shadow: 0 2px 5px rgba(0,0,0,.3);
+    /*-webkit-border-radius: 6px;*/
+    /*border-radius: 6px;*/
+    /*-webkit-box-shadow: 0 2px 5px rgba(0,0,0,.3);*/
+    /*box-shadow: 0 2px 5px rgba(0,0,0,.3);*/
 }
 
 .b-popcat-title {
@@ -131,16 +133,17 @@ h1 {
     overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
+    text-align: center;
 }
 
 .b-popcat-table__item .b-link {
-    padding-left: 22px;
+    padding: 11px;
     font-size: 13px;
     line-height: 14px;
     position: relative;
     display: block;
-    width: 95px;
-    height: 135px;
+    width: 142px;
+    height: 202px;
     margin: auto;
     text-decoration: none;
     word-wrap: break-word;
@@ -149,22 +152,34 @@ h1 {
 }
 
 .b-popcat-table__item_type_phone .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/1h_MU60-N5k4e8YEUhhjUxJoQb4.svg);
+    background-image: url(../img/phone.svg);
 }
 .b-popcat-table__item_type_tablet .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/g5spw7RUgPez1d_ChSj8nR0BL5U.svg);
+    background-image: url(../img/pad.svg);
 }
 .b-popcat-table__item_type_notebook .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/XTM5eHrpk7kDTqv9OUioNTUDCHo.svg);
+    background-image: url(../img/notebook.svg);
 }
 .b-popcat-table__item_type_tv .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/o4Ay15WpuP-t66qPC3tjbabInIA.svg);
+    background-image: url(../img/computer.svg);
 }
 .b-popcat-table__item_type_camera .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/nPfilPMYcwXqKVKdUQTne5Y9hyU.svg);
+    background-image: url(../img/photo.svg);
 }
 .b-popcat-table__item_type_clothes .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/X0R3K-Z7r-olJJM-91-HdbubOdw.svg);
+    background-image: url(../img/clothing.svg);
+}
+.b-popcat-table__item_type_android .b-popcat-icon:after {
+    background-image: url(../img/android.svg);
+}
+.b-popcat-table__item_type_ios .b-popcat-icon:after {
+    background-image: url(../img/apple.svg);
+}
+.b-popcat-table__item_type_windows .b-popcat-icon:after {
+    background-image: url(../img/windows.svg);
+}
+.b-popcat-table__item_type_blackberry .b-popcat-icon:after {
+    background-image: url(../img/blackberry.svg);
 }
 .b-popcat-icon:after {
     position: absolute;
@@ -178,8 +193,6 @@ h1 {
     background-size: contain;
 }
 
-
-
 #swipe-region{
     position: absolute;
     left: 0;
@@ -188,7 +201,7 @@ h1 {
     bottom: 0;
     width: 10%;
 }
-#mapapp .ui-header .ui-icon-search{
+#main_menu .ui-header .ui-icon-search{
     right: 40px;
 }
 
@@ -202,4 +215,17 @@ h1 {
     margin-bottom: -1px;
     border-left: none;
     border-right: none;
+}
+.b-popcat-table__inner {
+    width: 100%;
+    border-color: #EEE;
+}
+
+.b-popcat-table {
+    width: 100%;
+    border-color: #EEE;
+}
+
+#main_menu {
+    width:100%;
 }
