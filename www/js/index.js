@@ -326,7 +326,7 @@ var app = {
             var data = items[i];
             cont.append( $("<div>", {class:"b-serp-item"})
 
-                .append ( $( "<a>", { class:"b-link",  href: "#" + data.id  } )
+                .append ( $( "<a>", { class:"b-link",  href: "#main_menu?item=" + data.id  } )
                     .append( $( "<i>", { class: "b-icon", style: "background-image: url(" + data.img + ")" } ) )
                     .append( $( "<div>", { class: "b-serp-description"} )
                         .append( $("<div>", { class: "b-serp-description__title" }) .append( data.title ) )
