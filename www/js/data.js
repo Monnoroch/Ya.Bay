@@ -1,4 +1,4 @@
-var data = {
+var data = [
     {
         "img": "http://mdata.yandex.net/i?path=b0910230238_img_id6738100464582526458.jpg",
         "title": "Apple iPhone 5S 16Gb",
@@ -79,4 +79,4 @@ var data = {
         "os": "ios",
         "id": "10",
     },
-};
+];
