@@ -444,3 +444,43 @@ h1 {
     background-image: url(../img/blackberry.svg);
 }
 
+.b-head-sideslide__east {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+}
+
+.b-model-image {
+    padding: 10px;
+}
+
+.b-model-image_size_l .b-icon {
+    height: 300px;
+    line-height: 300px;
+    -webkit-background-size: 100% 100%;
+    background-size: contain;
+}
+
+.b-model-image .b-icon {
+    display: block;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.b-techspec__list {
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+

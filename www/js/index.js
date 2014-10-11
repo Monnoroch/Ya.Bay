@@ -205,6 +205,7 @@ var app = {
             //fillList(data, $("#main_menu > .ui-content > .b-serp"));
         //}, 100);
 
+
         $( "#menu" ).on( "panelbeforeopen", function() {
             $("#black-back").show();
         } );
@@ -219,7 +220,8 @@ var app = {
 
         this.fetchCats(function(){
             self.fetchItems(function(){
-                $.mobile.changePage("#main_menu");
+               // $.mobile.changePage("#main_menu");
+               $.mobile.changePage("#item")
             });
             //self.renderCats(self.cats);
         });
@@ -361,7 +363,7 @@ var app = {
         }
         return result;
     },
-    
+
     // processBid: function(userid, token, itemid, bid) {
     //     var item = this.getItemById(itemid);
 
