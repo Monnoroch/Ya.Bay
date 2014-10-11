@@ -50,16 +50,20 @@ var app = {
         }
 
         window.addEventListener('orientationchange', this.onOrientationChange);
+
         document.ontouchmove = function(event){
           // if( $.mobile.activePage.attr('id') == "main_menu" ){
           //  event.preventDefault();
           // }
         }
 
+
         $( document ).bind( "mobileinit", function() {
             // Make your jQuery Mobile framework configuration changes here!
             $.mobile.allowCrossDomainPages = true;
             $.support.cors = true;
+            $.mobile.ignoreContentEnabled = true;
+            $.mobile.defaultPageTransition = "slide";
         });
 
         $(".b-popcat-table__item_type_phone").click(function(){
@@ -77,8 +81,8 @@ var app = {
             $.mobile.changePage("#main_menu");
         }, 100);
         
-        
-        $( "#swipe-region" ).on( "swipe", function(){
+        $( "#swipe-region" ).on( "swiperight", function(e) {
+            e.stopImmediatePropagation();
             $( "#menu" ).panel( "open" );
         } );
 
