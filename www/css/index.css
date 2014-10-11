@@ -134,13 +134,14 @@ h1 {
 }
 
 .b-popcat-table__item .b-link {
+    padding-left: 22px;
     font-size: 13px;
     line-height: 14px;
     position: relative;
     display: block;
     width: 95px;
     height: 135px;
-    margin: 0 auto;
+    margin: auto;
     text-decoration: none;
     word-wrap: break-word;
     color: #000;
