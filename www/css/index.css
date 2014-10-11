@@ -215,13 +215,43 @@ h1 {
     bottom: 0;
     width: 10%;
 }
-#main_menu .ui-header .ui-icon-search{
-    right: 40px;
+.ui-header .ui-icon-search{
+    right: 4em;
+}
+
+.ui-header .ui-btn{
+    width: 3em;
+    height: 3em;
+}
+.ui-header .ui-title{
+    margin: 0 8em 0 4em;
+    padding: 1.3em 0;   
+}
+
+#search-title{
+    margin: 0 4em 0 4em;
+    padding: 0.3em 0;   
+}
+#search-title .ui-btn{
+    width: 1.75em;
+    height: 1.75em;
+}
+.ui-header .ui-input-search{
+    box-shadow: none;
+    text-shadow: none;
+}
+.ui-header .ui-input-search input{
+    box-shadow: none;
+    text-shadow: none;
+}
+.ui-header .ui-input-search .ui-icon-delete:after {
+    background-image: url("../img/clear.svg");
+    background-color: #fff;
 }
 
 .ui-panel{
     position: fixed;
-    top: 44px;
+    top: 4em;
     bottom: 0;
     min-height: initial;
     background-color: rgb(246, 246, 246)!important;
@@ -265,7 +295,7 @@ h1 {
 
 .ui-content{
    position: absolute;
-   top: 44px;
+   top: 4em;
    left: 0;
    right: 0;
    bottom: 0;

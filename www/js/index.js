@@ -171,6 +171,25 @@ var app = {
                 $( "#main_menu" ).jqmData( "url", processedHash.parsed.hash );
             }
         });
+        
+        $("#search").on("click",function(){
+            $("#main-title").hide();
+            $("#search-title").show();
+            $(this).hide();
+            $("#search-input").focus();
+        })
+        $("#search-menu").on("click",function(){
+            $("#main-title").hide();
+            $("#search-title").show();
+            $("#search").hide();
+            $("#search-input").focus();
+            $( "#menu" ).panel( "close" );
+        })
+        $(document).on("focusout", "#search-input",function(){ 
+            $("#main-title").show();
+            $("#search-title").hide();
+            $("#search").show();
+        });
 
 
     },
@@ -343,6 +362,7 @@ var app = {
         return result;
     },
 
+<<<<<<< HEAD
     // processBid: function(userid, token, itemid, bid) {
     //     var item = this.getItemById(itemid);
 
