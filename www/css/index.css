@@ -169,6 +169,18 @@ h1 {
 .b-popcat-table__item_type_clothes .b-popcat-icon:after {
     background-image: url(http://yandex.st/market-mobile/touch/_/X0R3K-Z7r-olJJM-91-HdbubOdw.svg);
 }
+.b-popcat-table__item_type_android .b-popcat-icon:after {
+    background-image: url(../img/android.svg);
+}
+.b-popcat-table__item_type_ios .b-popcat-icon:after {
+    background-image: url(../img/apple.svg);
+}
+.b-popcat-table__item_type_windows .b-popcat-icon:after {
+    background-image: url(../img/windows.svg);
+}
+.b-popcat-table__item_type_blackberry .b-popcat-icon:after {
+    background-image: url(../img/blackberry.svg);
+}
 .b-popcat-icon:after {
     position: absolute;
     top: 10%;
