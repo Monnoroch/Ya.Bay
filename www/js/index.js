@@ -168,6 +168,8 @@ var app = {
                     $("#items").empty();
                     $("#cats").empty();
                     $("#new-lot").show();
+                    
+                    self.makeLot();
                 }
                 else if(itemId) {
                     $("#item").empty();
@@ -209,6 +211,10 @@ var app = {
             $("#search-input").val("");
         });
 
+        
+        $("#begin").on("click", function(){
+            alert("begin!")
+        })
 
     },
     // deviceready Event Handler
@@ -383,6 +389,15 @@ var app = {
             result = this.items;
         }
         return result;
+    },
+    
+    makeLot: function(){
+        var i = Math.round( Math.random()*(globalItemsData.length-1) );
+        var data = globalItemsData[i];
+        
+        $(".cover").css( "background-image", "url(" + data.img + ")" )
+        $("#name").val( data.title )
+        $("#text").val( data.text )
     },
 
     // processBid: function(userid, token, itemid, bid) {
