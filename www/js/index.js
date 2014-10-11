@@ -16,6 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+Number.prototype.printFloat = function (fix){
+    if(fix == undefined) fix = 2;
+    return String(this.toFixed(fix)).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+}
+Number.prototype.printInt = function (){
+  return this.printFloat(0);
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -26,24 +34,45 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        var self = this;
+        this.app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+        if ( this.app ) {
+            // TODO
+            // document.addEventListener('deviceready', this.onDeviceReady, false);
+            $(document).ready(function() {
+                self.onDeviceReady();
+            });
+        } else {
+            alert("web");
+            $(document).ready(function(){
+                self.onDeviceReady();
+            });
+        }
+
+        window.addEventListener('orientationchange', this.onOrientationChange);
+        document.ontouchmove = function(event){
+          if( $.mobile.activePage.attr('id') == "mapapp" ){
+           event.preventDefault();
+          }
+        }
+
+        $( document ).bind( "mobileinit", function() {
+            // Make your jQuery Mobile framework configuration changes here!
+            $.mobile.allowCrossDomainPages = true;
+            $.support.cors = true;
+        });
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        var self = this;
+
+        //this.onOrientationChange();
     },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+    onOrientationChange: function() {
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
     }
+
 };
