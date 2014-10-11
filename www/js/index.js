@@ -164,6 +164,7 @@ var app = {
                     $("#item").empty();
                     $("#item").append(self.renderItem(itemId));
                 } else if(cat) {
+                    $("#item").empty();
                     self.renderCats( cat, path.join(",") );
                     self.renderItems();
                 }
