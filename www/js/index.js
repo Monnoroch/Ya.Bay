@@ -67,10 +67,17 @@ var app = {
         });
 
         var filter = [];
+        var categ_data;
 
         $(".b-popcat-table__item_type_phone").click(function(){
             $.mobile.changePage("#item_type_phone_menu");
-            fillList(data.filter(function(val){ return val.categ === "phones"}), $("#item_type_phone_menu > .ui-content > .b-serp"));
+            categ_data = data.filter(function(val){ return val.categ === "phones"});
+            fillList(categ_data, $("#item_type_phone_menu > .ui-content > .b-serp"));
+        });
+        $(".b-popcat-table__item_type_tv").click(function(){
+            $.mobile.changePage("#item_type_tv_menu");
+            categ_data = data.filter(function(val){ return val.categ === "tvs"});
+            fillList(categ_data, $("#item_type_tv_menu > .ui-content > .b-serp"));
         });
 
         function os_click_handler(os) {
@@ -88,9 +95,9 @@ var app = {
 
                 var filtered_data
                 if(filter.length == 0)
-                    filtered_data = data;
+                    filtered_data = categ_data;
                 else {
-                        filtered_data = data.filter(function(val) {
+                        filtered_data = categ_data.filter(function(val) {
                         console.log(val.os)
                         console.log(filter.indexOf(val.os))
                         return filter.indexOf(val.os) !== -1;
