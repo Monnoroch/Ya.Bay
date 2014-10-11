@@ -229,9 +229,16 @@ h1 {
     text-align: left;
 }
 
+.ui-header #main-title {
+    margin: 0 3.4em 0 1.7em;
+    padding: 0.2em 0;
+    text-align: left;
+    font-size: 37px;
+}
+
 #search-title{
     margin: 0 4em 0 4em;
-    padding: 0.3em 0;   
+    padding: 0.3em 0;
 }
 #search-title .ui-btn{
     width: 1.75em;
@@ -269,7 +276,7 @@ h1 {
 }
 
 .ui-panel a{
-    font-weight: normal;   
+    font-weight: normal;
     border: none;
 }
 
@@ -388,7 +395,7 @@ h1 {
     overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    text-align: center;   
+    text-align: center;
     color: rgb(0, 0, 0);
     cursor: auto;
     font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica, Arial, sans-serif;
