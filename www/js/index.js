@@ -174,52 +174,6 @@ var app = {
         });
         
 
-//         var filter = [];
-//         var categ_data;
-// 
-//         $(".b-popcat-table__item_type_phone").click(function(){
-//             $.mobile.changePage("#item_type_phone_menu");
-//             categ_data = data.filter(function(val){ return val.categ === "phones"});
-//             fillList(categ_data, $("#item_type_phone_menu > .ui-content > .b-serp"));
-//         });
-//         $(".b-popcat-table__item_type_tv").click(function(){
-//             $.mobile.changePage("#item_type_tv_menu");
-//             categ_data = data.filter(function(val){ return val.categ === "tvs"});
-//             fillList(categ_data, $("#item_type_tv_menu > .ui-content > .b-serp"));
-//         });
-
-//         function os_click_handler(os) {
-//             return function(e) {
-//                 $("#item_type_phone_menu > .ui-content > .b-serp").empty();
-//                 $(this).toggleClass("activated");
-//                 
-//                 if($(this).hasClass('activated')) {
-//                     filter.push(os);
-//                 } else {
-//                     filter.splice( filter.indexOf(os), 1 );
-//                 }
-// 
-//                 console.log(filter);
-// 
-//                 var filtered_data
-//                 if(filter.length == 0)
-//                     filtered_data = categ_data;
-//                 else {
-//                         filtered_data = categ_data.filter(function(val) {
-//                         console.log(val.os)
-//                         console.log(filter.indexOf(val.os))
-//                         return filter.indexOf(val.os) !== -1;
-//                     });
-//                 }
-// 
-//                 fillList(filtered_data, $("#item_type_phone_menu > .ui-content > .b-serp"));
-//             }
-//         }
-// 
-//         $(".b-popcat-table__item_type_android").click(os_click_handler("android"));
-//         $(".b-popcat-table__item_type_ios").click(os_click_handler("ios"));
-//         $(".b-popcat-table__item_type_blackberry").click(os_click_handler("blackberry")); 
-//         $(".b-popcat-table__item_type_windows").click(os_click_handler("windows")); 
     },
     // deviceready Event Handler
     //

@@ -219,6 +219,11 @@ h1 {
     right: 40px;
 }
 
+.ui-panel{
+    position: fixed;
+    top: 44px;
+}
+
 .ui-panel .ui-panel-inner{
     padding: 0;
 }
