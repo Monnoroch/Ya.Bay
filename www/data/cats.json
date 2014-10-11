@@ -1,0 +1,57 @@
+[
+{
+    "id": "item_type_phone",
+    "icon": "icon-phone",
+    "name": "Мобильные",
+    "children":[{
+        "id": "item_type_ios",
+        "icon": "icon-ios",
+        "name": "Apple"
+    },
+    {
+        "id": "item_type_android",
+        "icon": "icon-android",
+        "name": "Android"
+    },
+    {
+        "id": "item_type_windows",
+        "icon": "icon-windows",
+        "name": "Windows"
+    },
+    {
+        "id": "item_type_blackberry",
+        "icon": "icon-blackberry",
+        "name": "Blackberry"
+    }]
+},
+{
+    "id": "item_type_tablet",
+    "icon": "icon-tablet",
+    "name": "Планшеты",
+    "children": []
+},
+{
+    "id": "item_type_notebook",
+    "icon": "icon-notebook",
+    "name": "Ноутбуки",
+    "children": []
+},
+{
+    "id": "item_type_tv",
+    "icon": "icon-tv",
+    "name": "Телевизоры",
+    "children": []
+},
+{
+    "id": "item_type_camera",
+    "icon": "icon-camera",
+    "name": "Фотоаппараты",
+    "children": []
+},
+{
+    "id": "item_type_clothes",
+    "icon": "icon-clothes",
+    "name": "Одежда",
+    "children": []
+}
+]

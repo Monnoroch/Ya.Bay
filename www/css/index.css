@@ -45,6 +45,22 @@ body {
     width:100%;
 }
 
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
 /* Portrait layout (default) */
 .app {
     position:absolute;             /* position in the center of the screen */
@@ -230,7 +246,7 @@ h1 {
 
 .ui-content{
    position: absolute;
-   top: 42px;
+   top: 44px;
    left: 0;
    right: 0;
    bottom: 0;
@@ -302,3 +318,80 @@ h1 {
 .b-popcat-table__item.activated {
     background-color: #CCC;
 }
+
+
+.cats-item{
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    display: inline-block;
+    width: 50%;
+/*     margin-right: -1px;  */
+    box-sizing: border-box;
+    margin-top: -3px;
+}
+.cats-item.check {
+    background-color: #CCC;
+}
+
+.cats-item span{
+    display: block;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    text-align: center;   
+    color: rgb(0, 0, 0);
+    cursor: auto;
+    font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.icon{
+    position: relative;
+    display: block;
+    width: 80%;
+    margin-bottom: 5px;
+    padding-bottom: 100%;
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    left: 10%;
+    content: "";
+    background: 50% 50% no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: contain;
+}
+
+
+.icon-phone {
+    background-image: url(../img/phone.svg);
+}
+
+.icon-tablet{
+    background-image: url(../img/pad.svg);
+}
+.icon-notebook{
+    background-image: url(../img/notebook.svg);
+}
+.icon-tv{
+    background-image: url(../img/computer.svg);
+}
+.icon-camera{
+    background-image: url(../img/photo.svg);
+}
+.icon-clothes{
+    background-image: url(../img/clothing.svg);
+}
+.icon-android {
+    background-image: url(../img/android.svg);
+}
+.icon-ios {
+    background-image: url(../img/apple.svg);
+}
+.icon-windows {
+    background-image: url(../img/windows.svg);
+}
+.icon-blackberry{
+    background-image: url(../img/blackberry.svg);
+}
+

@@ -31,13 +31,6 @@
         <title>Я. Бэй</title>
     </head>
     <body>
-        <div data-role="page" id="landing">
-            <div class="app">
-                <img src = "./img/b-head-logo.ru.png"/>
-                <div style="background-color:#f60; color:#fff; font-size: 20px;">ДЕНЬГИ</div>
-            </div>
-        </div>
-
 
         <div data-role="page" id="main_menu">
             <div data-role="header">
@@ -60,61 +53,49 @@
                     <a href="#" class="ui-btn ui-icon-calendar ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Мои объявления</a>
                     <a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Разместить объявление</a>
                 </div>
-        
-                <div id="cats"></div>
 
-                <div id="items"></div>
-            </div>
-        </div>
-<!--
-        <div data-role="page" id="item_type_phone_menu">
-            <div data-role="header">
-                <a href="#menu2" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon">View</a>
-                <span class="ui-title">Ya.Bay</span>
-                <a href="#search" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-icon-search ui-btn-right ui-btn-inline">Search</a>
-                <a href="#config" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-icon-gear ui-btn-right ui-btn-inline">Search</a>
-
-            </div>
-
-            <div role="main" class="ui-content">
-
-                <div id="swipe-region"></div>
-    
-                <div data-role="panel" id="menu2" data-display="overlay">
-                    <a href="#" class="ui-btn ui-icon-search ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Поиск</a>
-                    <a href="#" class="ui-btn ui-icon-heart ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Сохраненные поиски</a>
-                    <a href="#" class="ui-btn ui-icon-star ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Избранное</a>
-                    <a href="#" class="ui-btn ui-icon-calendar ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Мои объявления</a>
-                    <a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Разместить объявление</a>
-                </div>
                 <div class="b-popcat-table">
                     <table cellspacing="0" border="1" class="b-popcat-table__inner">
                         <tbody>
                             <tr class="b-popcat-table__row">
-                                <td class="b-popcat-table__item b-popcat-table__item_type_android">
-                                    <a class="b-link" href="#item_type_android">
+                                <td class="b-popcat-table__item b-popcat-table__item_type_phone">
+                                    <a class="b-link" href="#item_type_phone">
                                         <i class="b-popcat-icon"></i>
-                                        <span class="b-popcat-title">Android</span>
+                                        <span class="b-popcat-title">Мобильные</span>
                                     </a>
                                 </td>
-                                <td class="b-popcat-table__item b-popcat-table__item_type_ios">
-                                    <a class="b-link" href="#item_type_ios">
+                                <td class="b-popcat-table__item b-popcat-table__item_type_tablet">
+                                    <a class="b-link" href="#item_type_tablet">
                                         <i class="b-popcat-icon"></i>
-                                        <span class="b-popcat-title">Apple</span>
+                                        <span class="b-popcat-title">Планшеты</span>
                                     </a>
                                 </td>
                             </tr>
                             <tr class="b-popcat-table__row">
-                                <td class="b-popcat-table__item b-popcat-table__item_type_windows">
-                                    <a class="b-link" href="#item_type_windows">
+                                <td class="b-popcat-table__item b-popcat-table__item_type_notebook">
+                                    <a class="b-link" href="/catalog?hid=91013">
                                         <i class="b-popcat-icon"></i>
-                                        <span class="b-popcat-title">Windows</span>
+                                        <span class="b-popcat-title">Ноутбуки</span>
                                     </a>
                                 </td>
-                                <td class="b-popcat-table__item b-popcat-table__item_type_blackberry">
-                                    <a class="b-link" href="#item_type_blackberry">
+                                <td class="b-popcat-table__item b-popcat-table__item_type_tv">
+                                    <a class="b-link" href="#item_type_tv">
                                         <i class="b-popcat-icon"></i>
-                                        <span class="b-popcat-title">Blackberry</span>
+                                        <span class="b-popcat-title">Телевизоры</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="b-popcat-table__row">
+                                <td class="b-popcat-table__item b-popcat-table__item_type_camera">
+                                    <a class="b-link" href="/catalog?hid=91148">
+                                        <i class="b-popcat-icon"></i>
+                                        <span class="b-popcat-title">Фотоаппараты</span>
+                                    </a>
+                                </td>
+                                <td class="b-popcat-table__item b-popcat-table__item_type_clothes">
+                                    <a class="b-link" href="/catalog?hid=8439686">
+                                        <i class="b-popcat-icon"></i>
+                                        <span class="b-popcat-title">Одежда</span>
                                     </a>
                                 </td>
                             </tr>
@@ -127,31 +108,6 @@
             </div>
         </div>
 
-        <div data-role="page" id="item_type_tv_menu">
-            <div data-role="header">
-                <a href="#menu3" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon">View</a>
-                <span class="ui-title">Ya.Bay</span>
-                <a href="#search" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-icon-search ui-btn-right ui-btn-inline">Search</a>
-                <a href="#config" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-icon-gear ui-btn-right ui-btn-inline">Search</a>
-
-            </div>
-
-            <div role="main" class="ui-content">
-
-                <div id="swipe-region"></div>
-    
-                <div data-role="panel" id="menu3" data-display="overlay">
-                    <a href="#" class="ui-btn ui-icon-search ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Поиск</a>
-                    <a href="#" class="ui-btn ui-icon-heart ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Сохраненные поиски</a>
-                    <a href="#" class="ui-btn ui-icon-star ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Избранное</a>
-                    <a href="#" class="ui-btn ui-icon-calendar ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Мои объявления</a>
-                    <a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Разместить объявление</a>
-                </div>
-
-                <div class="b-serp">
-                </div>
-            </div>
-        </div>-->
 
         <!--<script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
