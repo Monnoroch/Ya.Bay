@@ -51,9 +51,9 @@ var app = {
 
         window.addEventListener('orientationchange', this.onOrientationChange);
         document.ontouchmove = function(event){
-          if( $.mobile.activePage.attr('id') == "main_menu" ){
-           event.preventDefault();
-          }
+          // if( $.mobile.activePage.attr('id') == "main_menu" ){
+          //  event.preventDefault();
+          // }
         }
 
         $( document ).bind( "mobileinit", function() {
