@@ -72,7 +72,7 @@ var app = {
         setTimeout(function() {
             $("#landing").hide();
             $("#mapapp").show();
-        }, 100);
+        }, 0);
 
         //this.onOrientationChange();
     },
