@@ -35,8 +35,9 @@ function createItemPage(id) {
     jQuery.ajax({
          url: "https://msymbolics.com:13001/yamoney_time?item=" + id,
          success: function(result) {
-         	start_time = result.start_unix_time;
-         	end_time = result.finish_unix_time;
+         	var times = result.split(",");
+         	start_time = times[0];
+         	end_time = times[1];
          },
          async:   false
     });
