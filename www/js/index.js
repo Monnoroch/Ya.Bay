@@ -51,7 +51,7 @@ var app = {
 
         window.addEventListener('orientationchange', this.onOrientationChange);
         document.ontouchmove = function(event){
-          if( $.mobile.activePage.attr('id') == "mapapp" ){
+          if( $.mobile.activePage.attr('id') == "main_menu" ){
            event.preventDefault();
           }
         }
@@ -61,6 +61,10 @@ var app = {
             $.mobile.allowCrossDomainPages = true;
             $.support.cors = true;
         });
+
+        $(".b-popcat-table__item_type_phone").click(function(){
+            $.mobile.changePage("#item_type_phone_menu");
+        })
     },
     // deviceready Event Handler
     //
@@ -70,8 +74,7 @@ var app = {
         var self = this;
 
         setTimeout(function() {
-            $("#landing").hide();
-            $("#mapapp").show();
+            $.mobile.changePage("#main_menu");
         }, 0);
 
         //this.onOrientationChange();
