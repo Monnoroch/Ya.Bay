@@ -59,6 +59,7 @@ var globalCatsData = [
 var globalItemsData = [
     {
         "img": "http://mdata.yandex.net/i?path=b0910230238_img_id6738100464582526458.jpg",
+        "img_big": "http://mdata.yandex.net/i?path=b0910230234_img_id2130334858748450706.jpg",
         "title": "Apple iPhone 5S 16Gb",
         "text": "GSM, LTE, смартфон, iOS 7, вес 112 г, ШхВхТ 58.6x123.8x7.6 мм, экран 4\", 640x1136, Bluetooth, Wi-Fi, GPS, ГЛОНАСС, фотокамера 8 МП, память 16 Гб, аккумулятор 1560 мАч",
         "cat": [0,0],
@@ -67,6 +68,7 @@ var globalItemsData = [
     },
     {
         "img": "http://mdata.yandex.net/i?path=b0904224341_img_id14396482440485392.jpeg",
+        "img_big": "http://mdata.yandex.net/i?path=b0904224335_img_id425230623294204433.jpeg",
         "title": "Sony Xperia Z3 Compact",
         "text": "GSM, LTE-A, смартфон, Android 4.4, вес 129 г, ШхВхТ 64.9x127x8.6 мм, экран 4.6\", 720x1280, FM-радио, Bluetooth, NFC, Wi-Fi, GPS, ГЛОНАСС, фотокамера 20.70 МП, память 16 Гб, слот microSD (TransFlash), аккумулятор 2600 мАч",
         "cat": [0,1],
@@ -83,6 +85,7 @@ var globalItemsData = [
     },
     {
         "img": "http://mdata.yandex.net/i?path=b0912194435_img_id2685468921689248210.jpeg",
+        "img_big": "http://mdata.yandex.net/i?path=b0912194428_img_id5905912166216362267.jpeg",
         "title": "Apple iPhone 6 64Gb",
         "text": "GSM, LTE-A, смартфон, iOS 8, вес 129 г, ШхВхТ 67x138.1x6.9 мм, экран 4.7\", 750x1334, Bluetooth, NFC, Wi-Fi, GPS, ГЛОНАСС, фотокамера 8 МП, память 64 Гб",
         "cat": [0,0],
@@ -91,6 +94,7 @@ var globalItemsData = [
     },
     {
         "img": "http://mdata.yandex.net/i?path=b0912194303_img_id7819188231934173594.jpeg",
+        "img_big": "http://mdata.yandex.net/i?path=b0912194256_img_id2962638793101999607.jpeg",
         "title": "Apple iPhone 6 16Gb",
         "text": "GSM, LTE-A, смартфон, iOS 8, вес 129 г, ШхВхТ 67x138.1x6.9 мм, экран 4.7\", 750x1334, Bluetooth, NFC, Wi-Fi, GPS, ГЛОНАСС, фотокамера 8 МП, память 16 Гб",
         "cat": [0,0],
@@ -108,6 +112,7 @@ var globalItemsData = [
     },
     {
         "img": "http://mdata.yandex.net/i?path=b0315073717_img_id4129002154421034629.jpg",
+        "img_big": "http://mdata.yandex.net/i?path=b0315073710_img_id873838796121319022.jpg",
         "title": "Samsung Galaxy S4 GT-I9500 16Gb",
         "text": "GSM, 3G, смартфон, Android 4.4, вес 130 г, ШхВхТ 69.8x136.6x7.9 мм, экран 5\", 1080x1920, Bluetooth, NFC, Wi-Fi, GPS, ГЛОНАСС, фотокамера 13 МП, память 16 Гб, слот microSD (TransFlash), аккумулятор 2600 мАч",
         "cat": [0,1],
@@ -116,6 +121,7 @@ var globalItemsData = [
     },
     {
         "img": "http://mdata.yandex.net/i?path=b0910231305_img_id8113638867959677735.jpg",
+        "img_big": "http://mdata.yandex.net/i?path=b0910231258_img_id4234096361348134928.jpg",
         "title": "Apple iPhone 5S 32Gb",
         "text": "GSM, LTE, смартфон, iOS 7, вес 112 г, ШхВхТ 58.6x123.8x7.6 мм, экран 4\", 640x1136, Bluetooth, Wi-Fi, GPS, ГЛОНАСС, фотокамера 8 МП, память 32 Гб, аккумулятор 1560 мАч",
         "cat": [0,0],
@@ -124,6 +130,7 @@ var globalItemsData = [
     },
     {
         "img": "http://mdata.yandex.net/i?path=b0115105237_img_id1276654684733213084.jpeg",
+        "img_big": "http://mdata.yandex.net/i?path=b0115105231_img_id8688773881847030997.jpeg",
         "title": "Sony Xperia Z1 Compact",
         "text": "GSM, LTE, смартфон, Android 4.4, вес 137 г, ШхВхТ 64.9x127x9.5 мм, экран 4.3\", 720x1280, FM-радио, Bluetooth, NFC, Wi-Fi, GPS, ГЛОНАСС, фотокамера 20.70 МП, память 16 Гб, слот microSD (TransFlash), аккумулятор 2300 мАч",
         "cat": [0,1],
@@ -132,6 +139,7 @@ var globalItemsData = [
     },
     {
         "img": "http://mdata.yandex.net/i?path=b0115105237_img_id1276654684733213084.jpeg",
+        "img_big": "http://mdata.yandex.net/i?path=b0115105231_img_id8688773881847030997.jpeg",
         "title": "Sony Xperia Z1 Compact",
         "text": "3G, Android 4.4, 4.30\", 720x1280, 16Гб, 137г, камера 20.70МП, Bluetooth, microSD (TransFlash)",
         "cat": [0,0],
