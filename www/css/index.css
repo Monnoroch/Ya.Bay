@@ -24,7 +24,7 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
+    /*background-color:#E4E4E4;
     background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
@@ -35,7 +35,7 @@ body {
         color-stop(0, #A7A7A7),
         color-stop(0.51, #E4E4E4)
     );
-    background-attachment:fixed;
+    background-attachment:fixed;*/
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
@@ -111,4 +111,68 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.b-popcat-icon {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    padding-bottom: 100%;
+    /*background-color: #a3b3c6;*/
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,.3);
+    box-shadow: 0 2px 5px rgba(0,0,0,.3);
+}
+
+.b-popcat-title {
+    display: block;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.b-popcat-table__item .b-link {
+    font-size: 13px;
+    line-height: 14px;
+    position: relative;
+    display: block;
+    width: 95px;
+    height: 135px;
+    margin: 0 auto;
+    text-decoration: none;
+    word-wrap: break-word;
+    color: #000;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+}
+
+.b-popcat-table__item_type_phone .b-popcat-icon:after {
+    background-image: url(http://yandex.st/market-mobile/touch/_/1h_MU60-N5k4e8YEUhhjUxJoQb4.svg);
+}
+.b-popcat-table__item_type_tablet .b-popcat-icon:after {
+    background-image: url(http://yandex.st/market-mobile/touch/_/g5spw7RUgPez1d_ChSj8nR0BL5U.svg);
+}
+.b-popcat-table__item_type_notebook .b-popcat-icon:after {
+    background-image: url(http://yandex.st/market-mobile/touch/_/XTM5eHrpk7kDTqv9OUioNTUDCHo.svg);
+}
+.b-popcat-table__item_type_tv .b-popcat-icon:after {
+    background-image: url(http://yandex.st/market-mobile/touch/_/o4Ay15WpuP-t66qPC3tjbabInIA.svg);
+}
+.b-popcat-table__item_type_camera .b-popcat-icon:after {
+    background-image: url(http://yandex.st/market-mobile/touch/_/nPfilPMYcwXqKVKdUQTne5Y9hyU.svg);
+}
+.b-popcat-table__item_type_clothes .b-popcat-icon:after {
+    background-image: url(http://yandex.st/market-mobile/touch/_/X0R3K-Z7r-olJJM-91-HdbubOdw.svg);
+}
+.b-popcat-icon:after {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    left: 10%;
+    content: "";
+    background: 50% 50% no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: contain;
 }
