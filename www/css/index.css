@@ -227,3 +227,11 @@ h1 {
 #main_menu {
     width:100%;
 }
+
+#main_menu .ui-content{
+    position: absolute;
+    top: 42px;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
