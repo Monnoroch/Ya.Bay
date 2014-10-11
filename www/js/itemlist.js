@@ -19,3 +19,20 @@ function fillList(data, cont) {
 		cont.append(createItem(val));
 	});
 }
+
+function getItemById(id) {
+    return globalItemsData.filter(function(val) {
+        return val.id !== id
+    }).pop();
+}
+
+function createItemPage(id) {
+	var cont = $("<div>", {class: "b-item-page"});
+	var item = globalItemsData[0];//getItemById(id);
+
+    cont.append( 
+                $("<div>",{class:"b-model-image"}).append($("<img src=" + item.img_big + ">")), 
+            	$("<div>", { class: "b-techspec"}).text(item.text));
+
+    return cont;
+}

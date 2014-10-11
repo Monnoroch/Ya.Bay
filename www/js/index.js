@@ -109,8 +109,7 @@ var app = {
                                 }
                             });
                     }
-                    if( self.path.join(",") != queryParameters.cat ){
-                    //data.options.openmenu = true;
+                    if( self.path.join(",") != queryParameters.cat || queryParameters["item"]) {
                         data.options.allowSamePageTransition = true;
                     }
                 }
@@ -138,6 +137,8 @@ var app = {
                 var path = self.path = [];
                 var check = self.check = false;
 
+                var itemId = queryParameters["item"];
+
                 if( queryParameters.cat ){
                     path = self.path = queryParameters.cat.split(",");
                     parent = path.slice(0,-1);
@@ -159,7 +160,10 @@ var app = {
                     }
                 }
 
-                if(cat){
+                if(itemId) {
+                    $("#item").empty();
+                    $("#item").append(self.renderItem(itemId));
+                } else if(cat) {
                     self.renderCats( cat, path.join(",") );
                     self.renderItems();
                 }
@@ -220,8 +224,7 @@ var app = {
 
         this.fetchCats(function(){
             self.fetchItems(function(){
-               // $.mobile.changePage("#main_menu");
-               $.mobile.changePage("#item")
+               $.mobile.changePage("#main_menu");
             });
             //self.renderCats(self.cats);
         });
@@ -264,7 +267,11 @@ var app = {
         // });
     },
 
-
+    renderItem: function(itemId) {
+        $("#items").empty();
+        $("#cats").empty();
+        return createItemPage(itemId);
+    },
 
     renderCats: function(cat, parent){
         var cont = $("#cats").empty();
@@ -309,7 +316,7 @@ var app = {
         }
     },
 
-    renderItems: function(){
+    renderItems: function() {
         var cont = $("#items").empty();
 
         var items = this.filterItems();
@@ -332,7 +339,7 @@ var app = {
     },
 
 
-    filterItems: function(){
+    filterItems: function() {
         var path = this.path;
         var result = [];
         var f = false;
