@@ -37,11 +37,11 @@ body {
     );
     background-attachment:fixed;*/
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
+/*     font-size:12px; */
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
+    /*text-transform:uppercase;*/
     width:100%;
 }
 
@@ -176,4 +176,30 @@ h1 {
     background: 50% 50% no-repeat;
     -webkit-background-size: 100% 100%;
     background-size: contain;
+}
+
+
+
+#swipe-region{
+    position: absolute;
+    left: 0;
+
+    top: 3em;
+    bottom: 0;
+    width: 10%;
+}
+#mapapp .ui-header .ui-icon-search{
+    right: 40px;
+}
+
+.ui-panel .ui-panel-inner{
+    padding: 0;
+}
+
+.ui-panel .ui-panel-inner .ui-btn{
+    text-align: left;
+    margin: 0;
+    margin-bottom: -1px;
+    border-left: none;
+    border-right: none;
 }

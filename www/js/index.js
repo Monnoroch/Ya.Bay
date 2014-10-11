@@ -43,7 +43,7 @@ var app = {
                 self.onDeviceReady();
             });
         } else {
-            alert("web");
+            //alert("web");
             $(document).ready(function(){
                 self.onDeviceReady();
             });
@@ -70,9 +70,16 @@ var app = {
         var self = this;
 
         setTimeout(function() {
-            $("#landing").hide();
-            $("#mapapp").show();
-        }, 0);
+            $.mobile.changePage("#mapapp");
+            //window.location.href = "#mapapp"
+            //$("#landing").hide();
+            //$("#mapapp").show();
+        }, 100);
+        
+        
+        $( "#swipe-region" ).on( "swipe", function(){
+            $( "#menu" ).panel( "open" );
+        } );
 
         //this.onOrientationChange();
     },

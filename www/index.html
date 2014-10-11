@@ -40,54 +40,85 @@
         </div>
 
         <div data-role="page" id="mapapp">
-            <div class="b-popcat-table" style="width: 1536px;">
-                <table class="b-popcat-table__inner">
-                    <tbody>
-                        <tr class="b-popcat-table__row">
-                            <td class="b-popcat-table__item b-popcat-table__item_type_phone">
-                                <a class="b-link" href="/catalog?hid=91491">
-                                    <i class="b-popcat-icon"></i>
-                                    <span class="b-popcat-title">Мобильные</span>
-                                </a>
-                            </td>
-                            <td class="b-popcat-table__item b-popcat-table__item_type_tablet">
-                                <a class="b-link" href="/catalog?hid=6427100">
-                                    <i class="b-popcat-icon"></i>
-                                    <span class="b-popcat-title">Планшеты</span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="b-popcat-table__row">
-                            <td class="b-popcat-table__item b-popcat-table__item_type_notebook">
-                                <a class="b-link" href="/catalog?hid=91013">
-                                    <i class="b-popcat-icon"></i>
-                                    <span class="b-popcat-title">Ноутбуки</span>
-                                </a>
-                            </td>
-                            <td class="b-popcat-table__item b-popcat-table__item_type_tv">
-                                <a class="b-link" href="/catalog?hid=90639">
-                                    <i class="b-popcat-icon"></i>
-                                    <span class="b-popcat-title">Телевизоры</span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="b-popcat-table__row">
-                            <td class="b-popcat-table__item b-popcat-table__item_type_camera">
-                                <a class="b-link" href="/catalog?hid=91148">
-                                    <i class="b-popcat-icon"></i>
-                                    <span class="b-popcat-title">Фотоаппараты</span>
-                                </a>
-                            </td>
-                            <td class="b-popcat-table__item b-popcat-table__item_type_clothes">
-                                <a class="b-link" href="/catalog?hid=8439686">
-                                    <i class="b-popcat-icon"></i>
-                                    <span class="b-popcat-title">Одежда</span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div data-role="header">
+                <a href="#menu" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-nodisc-icon ui-alt-icon">View</a>
+                <span class="ui-title">Ya.Bay</span>
+                <a href="#search" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-icon-search ui-btn-right ui-btn-inline">Search</a>
+                <a href="#config" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-icon-gear ui-btn-right ui-btn-inline">Search</a>
+<!--                 <a href="#config" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-nodisc-icon ui-icon-bars ui-alt-icon ui-btn-inline">Search</a> -->
+<!--                 <a href="#" id="enable-super-placemark" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-green-icon ui-icon-location ui-btn-right ui-btn-inline">View</a> -->
+<!--                 <a href="#" id="home" class="ui-btn ui-btn-icon-notext ui-nodisc-icon ui-alt-icon ui-icon-home ui-btn-right ui-btn-inline" style="right: 40px">View</a> -->
             </div>
+        
+            <div role="main" class="ui-content">
+
+                <div id="swipe-region"></div>
+    
+
+                <div data-role="panel" id="menu" data-display="overlay">
+
+                    <a href="#" class="ui-btn ui-icon-search ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Поиск</a>
+                    <a href="#" class="ui-btn ui-icon-heart ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Сохраненные поиски</a>
+                    <a href="#" class="ui-btn ui-icon-star ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Избранное</a>
+                    <a href="#" class="ui-btn ui-icon-calendar ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Мои объявления</a>
+                    <a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Разместить объявление</a>
+
+
+                </div>
+
+
+                <div class="b-popcat-table" style="width: 1536px;">
+                    <table class="b-popcat-table__inner">
+                        <tbody>
+                            <tr class="b-popcat-table__row">
+                                <td class="b-popcat-table__item b-popcat-table__item_type_phone">
+                                    <a class="b-link" href="/catalog?hid=91491">
+                                        <i class="b-popcat-icon"></i>
+                                        <span class="b-popcat-title">Мобильные</span>
+                                    </a>
+                                </td>
+                                <td class="b-popcat-table__item b-popcat-table__item_type_tablet">
+                                    <a class="b-link" href="/catalog?hid=6427100">
+                                        <i class="b-popcat-icon"></i>
+                                        <span class="b-popcat-title">Планшеты</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="b-popcat-table__row">
+                                <td class="b-popcat-table__item b-popcat-table__item_type_notebook">
+                                    <a class="b-link" href="/catalog?hid=91013">
+                                        <i class="b-popcat-icon"></i>
+                                        <span class="b-popcat-title">Ноутбуки</span>
+                                    </a>
+                                </td>
+                                <td class="b-popcat-table__item b-popcat-table__item_type_tv">
+                                    <a class="b-link" href="/catalog?hid=90639">
+                                        <i class="b-popcat-icon"></i>
+                                        <span class="b-popcat-title">Телевизоры</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="b-popcat-table__row">
+                                <td class="b-popcat-table__item b-popcat-table__item_type_camera">
+                                    <a class="b-link" href="/catalog?hid=91148">
+                                        <i class="b-popcat-icon"></i>
+                                        <span class="b-popcat-title">Фотоаппараты</span>
+                                    </a>
+                                </td>
+                                <td class="b-popcat-table__item b-popcat-table__item_type_clothes">
+                                    <a class="b-link" href="/catalog?hid=8439686">
+                                        <i class="b-popcat-icon"></i>
+                                        <span class="b-popcat-title">Одежда</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
         </div>
 
         <!--<script type="text/javascript" src="cordova.js"></script>-->
