@@ -222,14 +222,14 @@ func main() {
 		itemArr, ok := r.Form["item"]
 		if !ok {
 			fmt.Println("Error: no item in", r)
-			fmt.Fprintf(w, "%d", 0)
+			fmt.Fprintf(w, "%d,%d", 0, 0)
 			return
 		}
 
 		item, ok := auctions[itemArr[0]]
 		if !ok {
 			fmt.Println("No auction for item", itemArr[0])
-			fmt.Fprintf(w, "%d", 0)
+			fmt.Fprintf(w, "%d,%d", 0, 0)
 			return
 		}
 
