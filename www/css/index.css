@@ -222,10 +222,24 @@ h1 {
 .ui-panel{
     position: fixed;
     top: 44px;
+    bottom: 0;
+    min-height: initial;
+    background-color: rgb(246, 246, 246)!important;
 }
 
+.ui-panel .bottom{
+    position: absolute;
+    left:0;
+    right: 0;
+    bottom: 0;
+}
 .ui-panel .ui-panel-inner{
     padding: 0;
+}
+
+.ui-panel a{
+    font-weight: normal;   
+    border: none;
 }
 
 .ui-panel .ui-panel-inner .ui-btn{

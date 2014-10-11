@@ -190,6 +190,12 @@ var app = {
             //fillList(data, $("#main_menu > .ui-content > .b-serp"));
         //}, 100);
 
+        $( "#menu" ).on( "panelbeforeopen", function() {
+            $("#black-back").show();
+        } );
+        $( "#menu" ).on( "panelbeforeclose", function() {
+            $("#black-back").hide();
+        } );
         $( "#swipe-region" ).on( "swiperight", function(e) {
             e.stopImmediatePropagation();
             $( "#menu" ).panel( "open" );
