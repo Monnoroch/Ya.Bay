@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html nosvg>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.3.min.css" />
+        <title>Я. Бэй</title>
+    </head>
+
+    <body>
+    	<!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<form action="https://sp-money.yandex.ru/oauth/authorize" method="POST"  >
+			<input type="text" name="client_id" value="9D3AEE4A6AFB434DCCED8E110E3EF2FDBB67961AB8927C93AA1ABDEB1F6DE593"  />
+			<input type="text" name="response_type" value="code"/>
+			<input type="text" name="redirect_uri" value="https://msymbolics.com:13001/yamoney"/>
+			<input type="text" name="scope" value="payment-p2p"/>
+
+			<input type="submit" value="отправить" />
+		</form>
+    </body>
+</html>

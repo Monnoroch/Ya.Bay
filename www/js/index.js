@@ -73,7 +73,6 @@ var app = {
           // }
         }
 
-
         $( document ).bind( "mobileinit", function() {
             // Make your jQuery Mobile framework configuration changes here!
             $.mobile.allowCrossDomainPages = true;
@@ -363,5 +362,36 @@ var app = {
         return result;
     },
 
+    processBid: function(userid, token, itemid, bid) {
+        var item = this.getItemById(itemid);
 
+        $.ajax({
+          type: "POST",
+          url: "https://money.yandex.ru/api/request-payment",
+          data: {
+            pattern_id: "p2p",
+            to: 410012119774823,
+            amount: bid,
+            message: item.title + " продан",
+            comment: item.title + " - " + item.text + " успешно продан за " + bid + " руб.",
+            test_payment: true,
+            test_result: "success"
+          },
+          headers: {
+              "Authorization": "Bearer " + token
+          },
+          success: function(data) {
+            alert(data);
+          },
+          error: function(data){
+            alert("error" + data);
+          },
+          dataType: "json"
+        });
+    },
+    getItemById: function(id) {
+        return globalItemsData.filter(function(val){
+            return val.id !== id
+        }).pop();
+    }
 };
