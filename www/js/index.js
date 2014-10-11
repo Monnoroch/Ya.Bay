@@ -213,7 +213,7 @@ var app = {
 
 
         $("#begin").on("click", function(){
-
+            $(".ui-content").scrollTop(  0 )
         })
 
     },
