@@ -38,9 +38,9 @@ var app = {
     // Application Constructor
     initialize: function() {
         var self = this;
-        
+
         this.bindEvents();
-        
+
         //this.fetchCats(function(){
             //self.renderCats(self.cats);
         //});
@@ -82,24 +82,24 @@ var app = {
         });
          $.mobile.defaultPageTransition = 'none';
          $.mobile.defaultDialogTransition = 'none';
-        
+
         $(document)
         .on( "pagechange", function( event, data ) {
-            
+
         })
         .on( "pagebeforechange", function( event, data ) {
             // When we go from #secondary-page to #secondary-page we wish to indicate
             // that a transition to the same page is allowed.
-            
-            
+
+
             if ( $.type( data.toPage ) === "string" &&
                 data.options.fromPage &&
                 data.options.fromPage.attr( "id" ) === "main_menu" &&
                 processHash( data.toPage ).cleanHash === "#main_menu" ) {
-             
+
                     var queryParameters = {},
                         processedHash = processHash( data.toPage );
-                        
+
                     if ( processedHash.queryParameters ) {
                         $.each( processedHash.queryParameters.split( "&" ),
                             function( index, value ) {
@@ -132,25 +132,25 @@ var app = {
                             }
                         });
                 }
-             
-             
+
+
                 var cat = self.cats;
                 var parent = [];
                 var path = self.path = [];
                 var check = self.check = false;
-                
+
                 if( queryParameters.cat ){
                     path = self.path = queryParameters.cat.split(",");
                     parent = path.slice(0,-1);
-                    
-                    
+
+
                     for(var i = 0; i < path.length; i++){
                         cat = cat[ path[i] ].children;
                         if( !cat ){
                             cat = self.cats;
                             break;
                         }
-                    }    
+                    }
                 }
                 if( queryParameters.check !== undefined ){
                     if( queryParameters.check == "" ){
@@ -159,7 +159,7 @@ var app = {
                         check = self.check = queryParameters.check.split(",");
                     }
                 }
-                
+
                 if(cat){
                     self.renderCats( cat, path.join(",") );
                     self.renderItems();
@@ -172,7 +172,7 @@ var app = {
                 $( "#main_menu" ).jqmData( "url", processedHash.parsed.hash );
             }
         });
-        
+
 
     },
     // deviceready Event Handler
@@ -186,61 +186,67 @@ var app = {
             //$.mobile.changePage("#main_menu");
             //fillList(data, $("#main_menu > .ui-content > .b-serp"));
         //}, 100);
-        
+
         $( "#swipe-region" ).on( "swiperight", function(e) {
             e.stopImmediatePropagation();
             $( "#menu" ).panel( "open" );
         } );
-        
-        
+
+
         this.fetchCats(function(){
             self.fetchItems(function(){
                 $.mobile.changePage("#main_menu");
             });
             //self.renderCats(self.cats);
         });
-        
-        
+
+
 
         //this.onOrientationChange();
     },
     onOrientationChange: function() {
 
     },
-    
+
     fetchCats: function(callback){
         var self = this;
-       $.ajax({
-            url: "data/cats.json",
-            success: function(data){
-                self.cats = data;
-                callback();
-            },
-            dataType: "json"
-        });
+        self.cats = globalCatsData;
+        callback();
+
+        // $.ajax({
+        //     url: "data/cats.json",
+        //     success: function(data){
+        //         self.cats = data;
+        //         callback();
+        //     },
+        //     dataType: "json"
+        // });
     },
-    
+
     fetchItems: function(callback){
         var self = this;
-       $.ajax({
-            url: "data/items.json",
-            success: function(data){
-                self.items = data;
-                callback();
-            },
-            dataType: "json"
-        });
+        self.items = globalItemsData;
+        callback();
+
+        // $.ajax({
+        //     url: "data/items.json",
+        //     success: function(data){
+        //         self.items = data;
+        //         callback();
+        //     },
+        //     dataType: "json"
+        // });
     },
-    
-    
-    
+
+
+
     renderCats: function(cat, parent){
         var cont = $("#cats").empty();
         var href;
         var check;
         var checkIndex;
         var newCheck;
-        
+
         if( !this.check ){
             this.check = [];
             for(var i = 0; i < cat.length; i++){
@@ -249,7 +255,7 @@ var app = {
                 }
             }
         }
-        
+
         for(var i = 0; i < cat.length; i++){
             if( cat[i].children ){
                 href = "#main_menu?cat=" + (parent?(parent+","):"") + i
@@ -274,18 +280,18 @@ var app = {
                     .append( $("<span>").append(cat[i].name) )
                 )
             )
-        }   
+        }
     },
-    
+
     renderItems: function(){
         var cont = $("#items").empty();
-        
+
         var items = this.filterItems();
-        
+
         for(var  i = 0; i < items.length; i++){
             var data = items[i];
             cont.append( $("<div>", {class:"b-serp-item"})
-            
+
                 .append ( $( "<a>", { class:"b-link",  href: "#" + data.id  } )
                     .append( $( "<i>", { class: "b-icon", style: "background-image: url(" + data.img + ")" } ) )
                     .append( $( "<div>", { class: "b-serp-description"} )
@@ -294,17 +300,17 @@ var app = {
                     )
                 )
             )
-            
+
             //cont.append( $("<div>").append( items[i].title ) )
         }
     },
-    
-    
+
+
     filterItems: function(){
         var path = this.path;
         var result = [];
         var f = false;
-        
+
         if( path && path.length > 0 ){
             for( var i = 0; i < this.items.length; i++ ){
                 if( this.items[i].cat.length >= path.length ){
@@ -331,6 +337,6 @@ var app = {
         }
         return result;
     },
-    
+
 
 };
