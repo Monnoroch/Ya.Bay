@@ -40,7 +40,7 @@ var app = {
         var self = this;
 
         this.bindEvents();
-        
+
 
         //this.fetchCats(function(){
             //self.renderCats(self.cats);
@@ -168,7 +168,7 @@ var app = {
                     $("#items").empty();
                     $("#cats").empty();
                     $("#new-lot").show();
-                    
+
                     self.makeLot();
                 }
                 else if(itemId) {
@@ -190,7 +190,7 @@ var app = {
                 $( "#main_menu" ).jqmData( "url", processedHash.parsed.hash );
             }
         });
-        
+
         $("#search").on("click",function(){
             $("#main-title").hide();
             $("#search-title").show();
@@ -204,16 +204,16 @@ var app = {
             $("#search-input").focus();
             $( "#menu" ).panel( "close" );
         })
-        $(document).on("focusout", "#search-input",function(){ 
+        $(document).on("focusout", "#search-input",function(){
             $("#main-title").show();
             $("#search-title").hide();
             $("#search").show();
             $("#search-input").val("");
         });
 
-        
+
         $("#begin").on("click", function(){
-            alert("begin!")
+
         })
 
     },
@@ -390,11 +390,11 @@ var app = {
         }
         return result;
     },
-    
+
     makeLot: function(){
-        var i = Math.round( Math.random()*(globalItemsData.length-1) );
+        var i = 0;
         var data = globalItemsData[i];
-        
+
         $(".cover").html( "<img src='" + data.img_big + "'/>" )
         $("#name").val( data.title )
         $("#text").val( data.text )
@@ -426,7 +426,7 @@ var app = {
     //       },
     //       dataType: "json"
     //     });
-    // }, 
+    // },
     // getItemById: function(id) {
     //     return globalItemsData.filter(function(val){
     //         return val.id !== id
