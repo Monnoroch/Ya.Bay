@@ -73,10 +73,6 @@ var app = {
           // }
         }
 
-        $("#settings").click(function(e) {
-            app.processBid(1, "41001575496082.4AE3278E0DE824E1C7CB819FB7956B2B17E8C876A4A22394255BD7E46110645740F9ACA288072CF5FBF47A6C026E774AEC7FF8E3E83723E36E55F68D41DC14D5E4E17C49ED7E56419EC6A5883CE64A0FF623A3AE674A31D3F73655F73ADF9BE63FF98AAA6D90B945E49A643ED0F8B2236435F5162F27FA279931FE5622B29915", 1, 0.5)
-        });
-
         $( document ).bind( "mobileinit", function() {
             // Make your jQuery Mobile framework configuration changes here!
             $.mobile.allowCrossDomainPages = true;
@@ -347,36 +343,36 @@ var app = {
         return result;
     },
 
-    processBid: function(userid, token, itemid, bid) {
-        var item = this.getItemById(itemid);
+    // processBid: function(userid, token, itemid, bid) {
+    //     var item = this.getItemById(itemid);
 
-        $.ajax({
-          type: "POST",
-          url: "https://money.yandex.ru/api/request-payment",
-          data: {
-            pattern_id: "p2p",
-            to: 410012119774823,
-            amount: bid,
-            message: item.title + " продан",
-            comment: item.title + " - " + item.text + " успешно продан за " + bid + " руб.",
-            test_payment: true,
-            test_result: "success"
-          },
-          headers: {
-              "Authorization": "Bearer " + token
-          },
-          success: function(data) {
-            alert(data);
-          },
-          error: function(data){
-            alert("error" + data);
-          },
-          dataType: "json"
-        });
-    }, 
-    getItemById: function(id) {
-        return globalItemsData.filter(function(val){
-            return val.id !== id
-        }).pop();
-    }
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "https://money.yandex.ru/api/request-payment",
+    //       data: {
+    //         pattern_id: "p2p",
+    //         to: 410012119774823,
+    //         amount: bid,
+    //         message: item.title + " продан",
+    //         comment: item.title + " - " + item.text + " успешно продан за " + bid + " руб. пользователю с id = " + userid,
+    //         test_payment: true,
+    //         test_result: "success"
+    //       },
+    //       headers: {
+    //           "Authorization": "Bearer " + token
+    //       },
+    //       success: function(data) {
+    //         alert(data);
+    //       },
+    //       error: function(data){
+    //         alert("error" + data);
+    //       },
+    //       dataType: "json"
+    //     });
+    // }, 
+    // getItemById: function(id) {
+    //     return globalItemsData.filter(function(val){
+    //         return val.id !== id
+    //     }).pop();
+    // }
 };
