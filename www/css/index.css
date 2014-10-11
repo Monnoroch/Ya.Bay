@@ -476,13 +476,19 @@ h1 {
     padding: 1em;
 }
 #new-lot .cover{
-    display: inline-block;
-    width: 80px;
-    height: 80px;
+/*     display: inline-block; */
+/*     width: 80px; */
+/*     height: 80px; */
     background: no-repeat 50%;
 /*     background-image: url(http://mdata.yandex.net/i?path=b0115105237_img_id1276654684733213084.jpeg); */
     -webkit-background-size: 100% 100%;
     background-size: contain;
+    padding: 10px;
+    margin: auto;
+    width: 180px;
+}
+#new-lot .cover img{
+    width: 180px;
 }
 #new-lot .cover.mini{
     width: 40px;

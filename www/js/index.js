@@ -395,7 +395,7 @@ var app = {
         var i = Math.round( Math.random()*(globalItemsData.length-1) );
         var data = globalItemsData[i];
         
-        $(".cover").css( "background-image", "url(" + data.img + ")" )
+        $(".cover").html( "<img src='" + data.img_big + "'/>" )
         $("#name").val( data.title )
         $("#text").val( data.text )
     },
