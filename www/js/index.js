@@ -361,8 +361,7 @@ var app = {
         }
         return result;
     },
-
-<<<<<<< HEAD
+    
     // processBid: function(userid, token, itemid, bid) {
     //     var item = this.getItemById(itemid);
 
