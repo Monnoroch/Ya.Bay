@@ -24,11 +24,71 @@ type userBid struct {
 	Amount float64
 }
 
+type auctData struct {
+	CreatorId string
+	Dur time.Duration
+	Bids []userBid
+}
+
 var tokens map[string]string
-var bids map[string][]userBid
+var auctions map[string]auctData
+
+func startAuction(item string) {
+	aucData := auctions[item]
+	<-time.After(aucData.Dur * time.Second)
+	delete(auctions, item)
+
+	if len(aucData.Bids) == 0 {
+		return // nothing to do
+	}
+
+	maxi := 0
+	max := 0.0
+	premax := 0.0
+	for i, v := range aucData.Bids {
+		if v.Amount > max {
+			premax = max
+			maxi = i
+			max = v.Amount
+		}
+	}
+
+	bidderId := aucData.Bids[maxi].UserId
+	token := tokens[bidderId]
+	amount := premax
+
+	reqData := url.Values{
+		"pattern_id": {"p2p"},
+		"to": {aucData.CreatorId},
+		"amount": {fmt.Sprintf("%d", amount)},
+		"message": {"Apple iPhone 5S 16Gb продан!"},
+		"comment": {"Apple iPhone 5S 16Gb продан за " + fmt.Sprintf("%d", amount) + " рублей пользователю " + bidderId + "."},
+		"test_payment": {"true"},
+		"test_result": {"success"},
+	}
+
+	req, err := http.NewRequest("POST", "https://money.yandex.ru/api/request-payment", strings.NewReader(reqData.Encode()))
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	req.Header.Add("Authorization", "Bearer " + token)
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	defer resp.Body.Close()
+}
 
 func main() {
 	fmt.Println("Start!")
+
+	tokens = make(map[string]string)
+	auctions = make(map[string]auctData)
+
 	http.HandleFunc("/yamoney", func(w http.ResponseWriter, r *http.Request) {
 		defer fmt.Fprintf(w, "%s", "<html><head><script>window.close();</script></head><body></body></html>")
 		fmt.Println("/yamoney", r)
@@ -106,58 +166,12 @@ func main() {
 			return
 		}
 
-		creatorId := idArr[0]
 		item := itemArr[0]
-
-		go func() {
-			<-time.After(time.Duration(dur) * time.Second)
-			bidsArr := bids[item]
-			delete(bids, item)
-
-			if len(bidsArr) == 0 {
-				return // nothing to do
-			}
-
-			maxi := 0
-			max := 0.0
-			premax := 0.0
-			for i, v := range bidsArr {
-				if v.Amount > max {
-					premax = max
-					maxi = i
-					max = v.Amount
-				}
-			}
-
-			bidderId := bidsArr[maxi].UserId
-			token := tokens[bidderId]
-			amount := premax
-
-			reqData := url.Values{
-				"pattern_id": {"p2p"},
-				"to": {creatorId},
-				"amount": {fmt.Sprintf("%d", amount)},
-				"message": {"Apple iPhone 5S 16Gb продан!"},
-				"comment": {"Apple iPhone 5S 16Gb продан за " + fmt.Sprintf("%d", amount) + " рублей пользователю " + bidderId + "."},
-				"test_payment": {"true"},
-				"test_result": {"success"},
-			}
-
-			req, err := http.NewRequest("POST", "https://money.yandex.ru/api/request-payment", strings.NewReader(reqData.Encode()))
-			if err != nil {
-				fmt.Println("Error:", err)
-				return
-			}
-
-			req.Header.Add("Authorization", "Bearer " + token)
-			client := &http.Client{}
-			resp, err := client.Do(req)
-			if err != nil {
-				fmt.Println("Error:", err)
-				return
-			}
-			defer resp.Body.Close()
-		}()
+		auctions[item] = auctData{
+			CreatorId: idArr[0],
+			Dur: time.Duration(dur),
+			Bids: make([]userBid, 0),
+		}
 	})
 
 	http.HandleFunc("/yamoney_bid", func(w http.ResponseWriter, r *http.Request) {
@@ -186,12 +200,17 @@ func main() {
 			return
 		}
 
-		id := idArr[0]
 		item := itemArr[0]
-		bids[item] = append(bids[item], userBid{
-			UserId: id,
+		aucData := auctions[item]
+		wasNoOne := len(aucData.Bids) == 0
+		aucData.Bids = append(aucData.Bids, userBid{
+			UserId: idArr[0],
 			Amount: amount,
 		})
+
+		if wasNoOne {
+			go startAuction(item)
+		}
 	})
 
 //	panic(http.ListenAndServe(":13000", nil))
