@@ -40,6 +40,7 @@ var app = {
         var self = this;
 
         this.bindEvents();
+        
 
         //this.fetchCats(function(){
             //self.renderCats(self.cats);
@@ -109,7 +110,10 @@ var app = {
                                 }
                             });
                     }
-                    if( self.path.join(",") != queryParameters.cat || queryParameters["item"]) {
+                    if( self.path.join(",") != queryParameters.cat ||
+                        queryParameters["item"] ||
+                        queryParameters["new-lot"]
+                    ) {
                         data.options.allowSamePageTransition = true;
                     }
                 }
@@ -159,12 +163,20 @@ var app = {
                         check = self.check = queryParameters.check.split(",");
                     }
                 }
-
-                if(itemId) {
+                if( queryParameters["new-lot"] ){
                     $("#item").empty();
+                    $("#items").empty();
+                    $("#cats").empty();
+                    $("#new-lot").show();
+                }
+                else if(itemId) {
+                    $("#item").empty();
+                    $("#new-lot").hide();
                     $("#item").append(self.renderItem(itemId));
-                } else if(cat) {
+                }
+                else if(cat) {
                     $("#item").empty();
+                    $("#new-lot").hide();
                     self.renderCats( cat, path.join(",") );
                     self.renderItems();
                 }
@@ -194,6 +206,7 @@ var app = {
             $("#main-title").show();
             $("#search-title").hide();
             $("#search").show();
+            $("#search-input").val("");
         });
 
 
