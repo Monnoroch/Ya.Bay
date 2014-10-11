@@ -152,22 +152,22 @@ h1 {
 }
 
 .b-popcat-table__item_type_phone .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/1h_MU60-N5k4e8YEUhhjUxJoQb4.svg);
+    background-image: url(../img/phone.svg);
 }
 .b-popcat-table__item_type_tablet .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/g5spw7RUgPez1d_ChSj8nR0BL5U.svg);
+    background-image: url(../img/pad.svg);
 }
 .b-popcat-table__item_type_notebook .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/XTM5eHrpk7kDTqv9OUioNTUDCHo.svg);
+    background-image: url(../img/notebook.svg);
 }
 .b-popcat-table__item_type_tv .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/o4Ay15WpuP-t66qPC3tjbabInIA.svg);
+    background-image: url(../img/computer.svg);
 }
 .b-popcat-table__item_type_camera .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/nPfilPMYcwXqKVKdUQTne5Y9hyU.svg);
+    background-image: url(../img/photo.svg);
 }
 .b-popcat-table__item_type_clothes .b-popcat-icon:after {
-    background-image: url(http://yandex.st/market-mobile/touch/_/X0R3K-Z7r-olJJM-91-HdbubOdw.svg);
+    background-image: url(../img/clothing.svg);
 }
 .b-popcat-table__item_type_android .b-popcat-icon:after {
     background-image: url(../img/android.svg);
