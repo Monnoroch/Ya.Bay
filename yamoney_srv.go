@@ -27,6 +27,8 @@ type userBid struct {
 type auctData struct {
 	CreatorId string
 	Dur time.Duration
+	StartTime time.Time
+	FinishTime time.Time
 	Bids []userBid
 }
 
@@ -35,6 +37,8 @@ var auctions map[string]auctData
 
 func startAuction(item string) {
 	aucData := auctions[item]
+	aucData.StartTime = time.Now()
+	aucData.FinishTime = time.Now().Add(aucData.Dur)
 	<-time.After(aucData.Dur * time.Second)
 	delete(auctions, item)
 
@@ -211,6 +215,25 @@ func main() {
 		if wasNoOne {
 			go startAuction(item)
 		}
+	})
+
+	http.HandleFunc("/yamoney_time", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("/yamoney_time", r)
+		itemArr, ok := r.Form["item"]
+		if !ok {
+			fmt.Println("Error: no item in", r)
+			fmt.Fprintf(w, "%d", 0)
+			return
+		}
+
+		item, ok := auctions[itemArr[0]]
+		if !ok {
+			fmt.Println("No auction for item", itemArr[0])
+			fmt.Fprintf(w, "%d", 0)
+			return
+		}
+
+		fmt.Fprintf(w, "%d,%d", item.StartTime.Unix(), item.FinishTime.Unix())
 	})
 
 //	panic(http.ListenAndServe(":13000", nil))

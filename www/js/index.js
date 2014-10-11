@@ -41,6 +41,7 @@ var app = {
 
         this.bindEvents();
 
+
         //this.fetchCats(function(){
             //self.renderCats(self.cats);
         //});
@@ -109,7 +110,10 @@ var app = {
                                 }
                             });
                     }
-                    if( self.path.join(",") != queryParameters.cat || queryParameters["item"]) {
+                    if( self.path.join(",") != queryParameters.cat ||
+                        queryParameters["item"] ||
+                        queryParameters["new-lot"]
+                    ) {
                         data.options.allowSamePageTransition = true;
                     }
                 }
@@ -159,8 +163,15 @@ var app = {
                         check = self.check = queryParameters.check.split(",");
                     }
                 }
+                if( queryParameters["new-lot"] ){
+                    $("#item").empty();
+                    $("#items").empty();
+                    $("#cats").empty();
+                    $("#new-lot").show();
 
-                if(itemId) {
+                    self.makeLot();
+                }
+                else if(itemId) {
                     $("#item").empty();
                     var item_obj = self.renderItem(itemId)
                     $("#item").append(item_obj.cont);
@@ -180,8 +191,11 @@ var app = {
                     }
 
                     clock();
-                } else if(cat) {
+                    $("#new-lot").hide();
+                }
+                else if(cat) {
                     $("#item").empty();
+                    $("#new-lot").hide();
                     self.renderCats( cat, path.join(",") );
                     self.renderItems();
                 }
@@ -193,7 +207,7 @@ var app = {
                 $( "#main_menu" ).jqmData( "url", processedHash.parsed.hash );
             }
         });
-        
+
         $("#search").on("click",function(){
             $("#main-title").hide();
             $("#search-title").show();
@@ -207,12 +221,17 @@ var app = {
             $("#search-input").focus();
             $( "#menu" ).panel( "close" );
         })
-        $(document).on("focusout", "#search-input",function(){ 
+        $(document).on("focusout", "#search-input",function(){
             $("#main-title").show();
             $("#search-title").hide();
             $("#search").show();
+            $("#search-input").val("");
         });
 
+
+        $("#begin").on("click", function(){
+            $(".ui-content").scrollTop(  0 )
+        })
 
     },
     // deviceready Event Handler
@@ -389,6 +408,15 @@ var app = {
         return result;
     },
 
+    makeLot: function(){
+        var i = 0;
+        var data = globalItemsData[i];
+
+        $(".cover").html( "<img src='" + data.img_big + "'/>" )
+        $("#name").val( data.title )
+        $("#text").val( data.text )
+    },
+
     // processBid: function(userid, token, itemid, bid) {
     //     var item = this.getItemById(itemid);
 
@@ -415,7 +443,7 @@ var app = {
     //       },
     //       dataType: "json"
     //     });
-    // }, 
+    // },
     // getItemById: function(id) {
     //     return globalItemsData.filter(function(val){
     //         return val.id !== id

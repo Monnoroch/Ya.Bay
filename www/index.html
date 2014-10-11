@@ -47,7 +47,7 @@
                 <span class="ui-title" id="search-title" style="display:none;">
                     <input id="search-input" type="search" name="search" id="search-basic" value="" />
                 </span>
-                
+
                 <a href="#" id="search" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-icon-search ui-btn-right ui-btn-inline">Search</a>
                 <a href="#config" class="ui-btn ui-btn-icon-notext ui-alt-icon ui-nodisc-icon ui-icon-gear ui-btn-right ui-btn-inline">Search</a>
 
@@ -65,7 +65,7 @@
                     <a href="#" class="ui-btn ui-icon-heart ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Сохраненные поиски</a>
                     <a href="#" class="ui-btn ui-icon-star ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Избранное</a>
                     <a href="#" class="ui-btn ui-icon-calendar ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Мои объявления</a>
-                    <a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Разместить объявление</a>
+                    <a href="#main_menu?new-lot=true" class="ui-btn ui-icon-plus ui-btn-icon-left ui-nodisc-icon ui-alt-icon">Разместить объявление</a>
 
                     <a href="#" class="ui-btn ui-icon-navigation ui-btn-icon-left ui-nodisc-icon ui-alt-icon bottom">Санкт-Петербург</a>
                 </div>
@@ -75,6 +75,35 @@
                 <div id="items"></div>
 
                 <div id="item"></div>
+
+                <div id="new-lot">
+                    <div class="cover"></div>
+                    <button class="ui-btn">Еще фотографии</button>
+
+                    <label for="name">Название лота:</label>
+                    <input type="text" name="name" id="name" value="Apple iPhone 6 16Gb">
+
+
+                    <label for="select-native-1">Категория:</label>
+                    <select name="select-native-1" id="select-native-1">
+                        <option value="1">Мобильные</option>
+                        <option value="2">Планшеты</option>
+                        <option value="3">Ноутбуки</option>
+                        <option value="4">Телевизоры</option>
+                    </select>
+
+                    <label for="textarea-a">Описание:</label>
+                    <textarea name="textarea" id="text">3G, iOS 8, 4.70\", 750x1334, 16Гб, 129г, камера 8МП, Bluetooth</textarea>
+
+                    <label for="datetime">Минимальная ставка:</label>
+                    <input type="text" data-role="date" data-inline="true" value="1000">
+
+                    <label for="datetime">Окончание:</label>
+                    <input type="text" data-role="date" data-inline="true" value="10/12/2014 18:00">
+
+                    <a href="#main_menu" id="begin" class="ui-btn ui-shadow">Начать аукцион</a>
+                </div>
+
             </div>
         </div>
 
