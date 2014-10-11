@@ -34,7 +34,12 @@
         <div data-role="page" id="landing">
             <div class="app">
                 <h1 style="background-color:#f60; color:#fff!important">ДЕНЬГИ</h1>
-                <a href="#mapapp" class="ui-btn">Начать</a>
+                <script type="text/javascript">
+                    setTimeout(function() {
+                        $("#landing").hide();
+                        $("#mapapp").show();
+                    }, 5000);
+                </script>
             </div>
         </div>
 
