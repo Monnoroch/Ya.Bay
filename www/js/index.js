@@ -162,7 +162,24 @@ var app = {
 
                 if(itemId) {
                     $("#item").empty();
-                    $("#item").append(self.renderItem(itemId));
+                    var item_obj = self.renderItem(itemId)
+                    $("#item").append(item_obj.cont);
+
+                    var start_time = item_obj.startTime,
+                        end_time = item_obj.endTime;
+
+                    function clock() {
+                        var $s = $("#item .knob-container");
+
+                        var cur_time = Date.now();
+
+                        $s.val( cur_time - start_time ).trigger("change");
+
+                        if( end_time - cur_time > 0)
+                            setTimeout(clock, 1000);
+                    }
+
+                    clock();
                 } else if(cat) {
                     $("#item").empty();
                     self.renderCats( cat, path.join(",") );
