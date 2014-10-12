@@ -40,7 +40,7 @@ body {
         color-stop(0.51, #E4E4E4)
     );
     background-attachment:fixed;*/
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: Arial, sans-serif;
 /*     font-size:12px; */
     height:100%;
     margin:0px;
@@ -410,7 +410,7 @@ background-image: url("../img/key.svg");
     text-align: center;
     color: rgb(0, 0, 0);
     cursor: auto;
-    font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica, Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 13px;
     margin-bottom: 10px;
 }
