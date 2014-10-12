@@ -486,8 +486,8 @@ background-image: url("../img/key.svg");
 }
 
 .b-techspec {
-    margin: 10px 0;
-    padding: 0 10px;
+/*     margin: 10px 0; */
+/*     padding: 0 10px; */
 }
 
 
@@ -532,5 +532,9 @@ canvas {
 
 .b-item-page .ui-input-text {
     border-width: 0px;
-    margin: 5px 9px 21px 9px;
+/*     margin: 5px 9px 21px 9px; */
+}
+
+#item{
+    padding: 1em;
 }
