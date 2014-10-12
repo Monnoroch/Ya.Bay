@@ -233,7 +233,7 @@ var app = {
             $(".ui-content").scrollTop(  0 )
             var id = 1;
             jQuery.ajax({
-                 url: "https://msymbolics.com:13001/yamoney_create?id=41001575496082&time=5&item=" + id,
+                 url: "https://msymbolics.com:13001/yamoney_create?id=410012119774823&time=5&item=" + id,
             });
         })
 

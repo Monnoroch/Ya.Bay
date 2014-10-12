@@ -40,7 +40,7 @@ function createItemPage(id) {
  //    });
 
     jQuery.ajax({
-         url: "https://msymbolics.com:13001/yamoney_bid?item=1&id=410012119774823&amount=0.1",
+         url: "https://msymbolics.com:13001/yamoney_bid?item=1&id=41001575496082&amount=0.01",
          success: function(result) {
          },
          async:   false
