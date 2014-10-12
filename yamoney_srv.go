@@ -19,6 +19,11 @@ type tokenResp struct {
 	Error string `json:"error"`
 }
 
+type requestPaymentRes struct {
+	Status string `json:"status"`
+	ReqId string `json:"request_id"`
+}
+
 type userBid struct {
 	UserId string
 	Amount float64
@@ -91,11 +96,54 @@ func startAuction(item string) {
 	}
 	defer resp.Body.Close()
 
-	_, err := ioutil.ReadAll(resp.Body)
+	buf, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
 	}
+
+	fmt.Println("!!! 1  ", string(buf))
+
+	var res requestPaymentRes
+	if err := json.Unmarshal(buf, &res); err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	if res.Status != "success" {
+		fmt.Println("Error: Result is", res)
+		return
+	}
+
+	reqDataP := url.Values{
+		"request_id": {res.ReqId},
+		"test_payment": {"true"},
+		"test_result": {"success"},
+	}
+
+	reqP, err := http.NewRequest("POST", "https://money.yandex.ru/api/process-payment", strings.NewReader(reqDataP.Encode()))
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	reqP.Header.Add("Authorization", "Bearer " + token)
+	reqP.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+
+	clientP := &http.Client{}
+	respP, err := clientP.Do(reqP)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	defer respP.Body.Close()
+
+	bufP, err := ioutil.ReadAll(respP.Body)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println("!!! 2  ", string(bufP))
 }
 
 func main() {
