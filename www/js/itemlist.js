@@ -54,13 +54,13 @@ function createItemPage(id) {
          	end_time = (times[1] - 1) * 1000;
 
          	if( start_time === 0 && end_time === 0) {
-         		$("#biddable").hide();
+         		$("canvas").hide();
          	} else {
-         		$("#biddable").show();
+         		$("canvas").show();
          	}
          },
          error: function(){
-         	$("#biddable").hide();
+         	$("canvas").hide();
          },
          async:   false
     });
