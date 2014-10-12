@@ -55,15 +55,8 @@ function createItemPage(id) {
 
             alert(start_time);
             alert(end_time);
-
-         	if( start_time === 0 && end_time === -1000) {
-         		$("canvas").hide();
-         	} else {
-         		$("canvas").show();
-         	}
          },
          error: function(){
-         	$("canvas").hide();
          },
          async:   false
     });
