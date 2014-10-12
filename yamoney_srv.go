@@ -33,13 +33,13 @@ type auctData struct {
 }
 
 var tokens map[string]string
-var auctions map[string]auctData
+var auctions map[string]*auctData
 
 func startAuction(item string) {
 	aucData := auctions[item]
 	aucData.StartTime = time.Now()
 	aucData.FinishTime = time.Now().Add(aucData.Dur)
-	<-time.After(aucData.Dur * time.Second)
+	<-time.After(aucData.Dur)
 	delete(auctions, item)
 
 	if len(aucData.Bids) == 0 {
@@ -47,8 +47,8 @@ func startAuction(item string) {
 	}
 
 	maxi := 0
-	max := 0.0
-	premax := 0.0
+	max := -1.0
+	premax := -1.0
 	for i, v := range aucData.Bids {
 		if v.Amount > max {
 			premax = max
@@ -60,13 +60,16 @@ func startAuction(item string) {
 	bidderId := aucData.Bids[maxi].UserId
 	token := tokens[bidderId]
 	amount := premax
+	if amount < 0 {
+		amount = max
+	}
 
 	reqData := url.Values{
 		"pattern_id": {"p2p"},
 		"to": {aucData.CreatorId},
-		"amount": {fmt.Sprintf("%d", amount)},
+		"amount": {fmt.Sprintf("%v", amount)},
 		"message": {"Apple iPhone 5S 16Gb продан!"},
-		"comment": {"Apple iPhone 5S 16Gb продан за " + fmt.Sprintf("%d", amount) + " рублей пользователю " + bidderId + "."},
+		"comment": {"Apple iPhone 5S 16Gb продан за " + fmt.Sprintf("%v", amount) + " рублей пользователю " + bidderId + "."},
 		"test_payment": {"true"},
 		"test_result": {"success"},
 	}
@@ -78,6 +81,8 @@ func startAuction(item string) {
 	}
 
 	req.Header.Add("Authorization", "Bearer " + token)
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
@@ -85,13 +90,19 @@ func startAuction(item string) {
 		return
 	}
 	defer resp.Body.Close()
+
+	_, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
 }
 
 func main() {
 	fmt.Println("Start!")
 
 	tokens = make(map[string]string)
-	auctions = make(map[string]auctData)
+	auctions = make(map[string]*auctData)
 
 	http.HandleFunc("/yamoney", func(w http.ResponseWriter, r *http.Request) {
 		defer fmt.Fprintf(w, "%s", "<html><head><script>window.close();</script></head><body></body></html>")
@@ -115,7 +126,7 @@ func main() {
 			"code": {code},
 			"client_id": {clientId},
 			"grant_type": {"authorization_code"},
-			"redirect_uri": {"https://msymbolics.com:13001/yamoney?id=" + id},
+			"redirect_uri": {"https://msymbolics.com:13001/yamoney"},
 		})
 		if err != nil {
 			fmt.Println("Error:", err)
@@ -123,12 +134,14 @@ func main() {
 		}
 		defer resp.Body.Close()
 		buf, err := ioutil.ReadAll(resp.Body)
+		fmt.Println("~~~ ", string(buf))
 		var obj tokenResp
 		if err := json.Unmarshal(buf, &obj); err != nil {
 			fmt.Println("Error:", err)
 			return
 		}
 
+		fmt.Println("~~~ Token:", id, obj.AccessToken)
 		tokens[id] = obj.AccessToken
 	})
 
@@ -146,6 +159,7 @@ func main() {
 
 	http.HandleFunc("/yamoney_create", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("/yamoney_create", r)
+		r.ParseForm()
 		idArr, ok := r.Form["id"]
 		if !ok {
 			fmt.Println("Error: no id in", r)
@@ -171,15 +185,16 @@ func main() {
 		}
 
 		item := itemArr[0]
-		auctions[item] = auctData{
+		auctions[item] = &auctData{
 			CreatorId: idArr[0],
-			Dur: time.Duration(dur),
+			Dur: time.Duration(dur) * time.Second,
 			Bids: make([]userBid, 0),
 		}
 	})
 
 	http.HandleFunc("/yamoney_bid", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("/yamoney_bid", r)
+		r.ParseForm()
 		idArr, ok := r.Form["id"]
 		if !ok {
 			fmt.Println("Error: no id in", r)
@@ -205,7 +220,12 @@ func main() {
 		}
 
 		item := itemArr[0]
-		aucData := auctions[item]
+		aucData, ok := auctions[item]
+		if !ok {
+			fmt.Println("Error: Bid for non-existed item.")
+			return
+		}
+
 		wasNoOne := len(aucData.Bids) == 0
 		aucData.Bids = append(aucData.Bids, userBid{
 			UserId: idArr[0],
@@ -219,6 +239,7 @@ func main() {
 
 	http.HandleFunc("/yamoney_time", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("/yamoney_time", r)
+		r.ParseForm()
 		itemArr, ok := r.Form["item"]
 		if !ok {
 			fmt.Println("Error: no item in", r)
@@ -233,7 +254,7 @@ func main() {
 			return
 		}
 
-		fmt.Fprintf(w, "%d,%d", item.StartTime.Unix(), item.FinishTime.Unix())
+		fmt.Fprintf(w, "%v,%v", item.StartTime.Unix(), item.FinishTime.Unix())
 	})
 
 //	panic(http.ListenAndServe(":13000", nil))

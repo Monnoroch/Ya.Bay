@@ -1,14 +1,14 @@
 function createItem(data) {
 	var cont = $("<div>", {class:"b-serp-item"});
 
-	cont.append('<a class="b-link" href="#main_menu?item=' + data.id + '">' + 
-			'<i class="b-icon" style="background-image: url(' + data.img + ')"></i>' + 
-			'<div class="b-serp-description">' + 
+	cont.append('<a class="b-link" href="#main_menu?item=' + data.id + '">' +
+			'<i class="b-icon" style="background-image: url(' + data.img + ')"></i>' +
+			'<div class="b-serp-description">' +
 				'<div class="b-serp-description__title">' + data.title + '</div>' +
 				'<div class="b-serp-description__text b-serp-description__text_limit_yes">' +
-					data.text + 
+					data.text +
 				'</div>' +
-			'</div>' + 
+			'</div>' +
 		'</a>');
 
 	return cont;
@@ -32,17 +32,31 @@ function createItemPage(id) {
 
 	var start_time, end_time;
 
+	// jQuery.ajax({
+ //         url: "https://msymbolics.com:13001/yamoney_create?item=1&id=41001575496082&time=10",
+ //         success: function(result) {
+ //         },
+ //         async:   false
+ //    });
+
     jQuery.ajax({
-         url: "https://msymbolics.com:13001/yamoney_time?item=" + id,
+         url: "https://msymbolics.com:13001/yamoney_bid?item=1&id=41001575496082&amount=0.01",
          success: function(result) {
-         	var times = result.split(",");
-         	start_time = times[0];
-         	end_time = times[1];
          },
          async:   false
     });
 
-    cont.append( 
+    jQuery.ajax({
+         url: "https://msymbolics.com:13001/yamoney_time?item=" + id,
+         success: function(result) {
+         	var times = result.split(",");
+         	start_time = (times[0] - 1) * 1000;
+         	end_time = (times[1] - 1) * 1000;
+         },
+         async:   false
+    });
+
+    cont.append(
                 $("<div>",{class:"b-model-image"}).append($("<img src=" + item.img_big + ">")),
                 $('<input data-min="' + 0 + '" readonly=true data-max="' + (end_time - start_time) + '" data-displayInput=true data-width="100" data-height="100" data-thickness=".3" class="knob-container">').knob({format: function(v){
 					// create a new javascript Date object based on the timestamp
