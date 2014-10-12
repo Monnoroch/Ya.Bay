@@ -176,6 +176,15 @@ var app = {
                     var item_obj = self.renderItem(itemId)
                     $("#item").append(item_obj.cont);
                     $("#bid").textinput();
+                    $("#bid-btn").click(function(){
+                        jQuery.ajax({
+                             url: "https://msymbolics.com:13001/yamoney_bid?item=1&id=41001575496082&amount=" + $("#bid").val(),
+                             success: function(result) {
+                                window.location.reload();
+                             },
+                             //async:   false
+                        });
+                    })
 
                     var start_time = item_obj.startTime,
                         end_time = item_obj.endTime;

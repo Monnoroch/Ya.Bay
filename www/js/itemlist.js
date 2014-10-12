@@ -39,12 +39,12 @@ function createItemPage(id) {
  //         async:   false
  //    });
 
-    jQuery.ajax({
-         url: "https://msymbolics.com:13001/yamoney_bid?item=1&id=41001575496082&amount=0.9",
-         success: function(result) {
-         },
-         async:   false
-    });
+    // jQuery.ajax({
+    //      url: "https://msymbolics.com:13001/yamoney_bid?item=1&id=41001575496082&amount=0.9",
+    //      success: function(result) {
+    //      },
+    //      async:   false
+    // });
 
     jQuery.ajax({
          url: "https://msymbolics.com:13001/yamoney_time?item=" + id,
