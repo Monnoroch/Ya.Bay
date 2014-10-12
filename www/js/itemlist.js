@@ -52,9 +52,6 @@ function createItemPage(id) {
          	var times = result.split(",");
          	start_time = (times[0]) * 1000;
          	end_time = (times[1] - 1) * 1000;
-
-            alert(start_time);
-            alert(end_time);
          },
          error: function(){
          },
@@ -63,7 +60,7 @@ function createItemPage(id) {
 
     cont.append(
                 $("<div>",{class:"b-model-image"}).append($("<img src=" + item.img_big + ">")),
-            $("<div>", {id: "biddable"}).append(   
+            $("<div>", {id: "biddable"}).append(
                 $('<input data-min="' + 0 + '" readonly=true data-max="' + (end_time - start_time) + '" data-displayInput=true data-width="100" data-height="100" data-thickness=".3" class="knob-container">').knob({format: function(v){
 					// create a new javascript Date object based on the timestamp
 					// multiplied by 1000 so that the argument is in milliseconds, not seconds
