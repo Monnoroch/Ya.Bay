@@ -256,6 +256,15 @@ var app = {
                     ref.close();
                 }
             });
+
+            ref.addEventListener('loaderror', function(event) {
+                alert("loaderror");
+                alert(event.url);
+                ref.close(); 
+                if (event.url.match("yamoney")) {
+                    ref.close();
+                }
+            });
         })
         $(document).on("focusout", "#search-input",function(){
             $("#main-title").show();
