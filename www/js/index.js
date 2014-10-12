@@ -191,11 +191,11 @@ var app = {
 
                     function clock() {
                         if( start_time == 0 && end_time == -1000) {
-                            $("canvas").hide();
-                            return
+                            $("#biddable").hide();
+                            return;
                         };
 
-                        $("canvas").show();
+                        $("#biddable").show();
 
                         var $s = $("#item .knob-container");
 
