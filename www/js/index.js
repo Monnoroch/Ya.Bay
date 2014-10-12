@@ -175,6 +175,7 @@ var app = {
                     $("#item").empty();
                     var item_obj = self.renderItem(itemId)
                     $("#item").append(item_obj.cont);
+                    $("#bid").textinput();
 
                     var start_time = item_obj.startTime,
                         end_time = item_obj.endTime;
@@ -222,8 +223,11 @@ var app = {
             $( "#menu" ).panel( "close" );
         })
         $("#login").on("click",function(){
-            var ref = window.open("./api.html", '_system');
-            ref.addEventListener('loadstop', function(event) {        
+            var ref = window.open("./api.html", '_blank');
+            ref.addEventListener('loadstop', function(event) {
+                alert("loadstop");
+                alert(event.url);
+                ref.close(); 
                 if (event.url.match("yamoney")) {
                     ref.close();
                 }

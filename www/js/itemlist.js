@@ -72,6 +72,8 @@ function createItemPage(id) {
 
 					return formattedTime;
                 }}),
+                $("<input>", { type:"text", name:"bid", id:"bid"}).val(0.9),
+                '<a href="#" id="bid-btn" class="ui-btn ui-alt-icon ui-nodisc-icon ui-btn-right">Поставить</a>',
             	$("<div>", { class: "b-techspec"}).text(item.text));
 
     return {startTime: start_time, endTime: end_time, cont: cont};

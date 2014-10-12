@@ -216,12 +216,12 @@ h1 {
     width: 10%;
 }
 .ui-header .ui-icon-search{
-    right: 8em;
-}
-
-.ui-header .ui-icon-login{
     right: 4em;
 }
+
+/*.ui-header .ui-icon-login{
+    right: 4em;
+}*/
 
 .ui-alt-icon.ui-icon-login:after, .ui-alt-icon .ui-icon-login:after, .ui-input-login:after {
 background-image: url("../img/key.svg");
@@ -524,4 +524,9 @@ canvas {
 }
 #new-lot .cover.c4{
     background-image: url(http://mdata.yandex.net/i?path=b0912194141_img_id5630413618622608054.jpeg);
+}
+
+.b-item-page .ui-input-text {
+    border-width: 0px;
+    margin: 5px 9px 21px 9px;
 }
