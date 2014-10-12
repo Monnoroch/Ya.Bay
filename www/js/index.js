@@ -180,7 +180,7 @@ var app = {
                         jQuery.ajax({
                              url: "https://msymbolics.com:13001/yamoney_bid?item=1&id=41001575496082&amount=" + $("#bid").val(),
                              success: function(result) {
-                                window.location.reload();
+                                window.location.href = "./index.html#main_menu?item=1";
                              },
                              //async:   false
                         });
