@@ -30,6 +30,7 @@ type userBid struct {
 }
 
 type auctData struct {
+	Started bool
 	CreatorId string
 	Dur time.Duration
 	StartTime time.Time
@@ -44,6 +45,8 @@ func startAuction(item string) {
 	aucData := auctions[item]
 	aucData.StartTime = time.Now()
 	aucData.FinishTime = time.Now().Add(aucData.Dur)
+	aucData.Started = true
+	fmt.Println("startAuction: ", *aucData)
 	<-time.After(aucData.Dur)
 	delete(auctions, item)
 
@@ -234,6 +237,7 @@ func main() {
 
 		item := itemArr[0]
 		auctions[item] = &auctData{
+			Started: false,
 			CreatorId: idArr[0],
 			Dur: time.Duration(dur) * time.Second,
 			Bids: make([]userBid, 0),
@@ -291,7 +295,7 @@ func main() {
 		itemArr, ok := r.Form["item"]
 		if !ok {
 			fmt.Println("Error: no item in", r)
-			fmt.Fprintf(w, "%d,%d", 0, 0)
+			fmt.Fprintf(w, "nil", 0, 0)
 			return
 		}
 
@@ -299,6 +303,12 @@ func main() {
 		if !ok {
 			fmt.Println("No auction for item", itemArr[0])
 			fmt.Fprintf(w, "%d,%d", 0, 0)
+			return
+		}
+
+		if !item.Started {
+			fmt.Println("Not started")
+			fmt.Fprintf(w, "%d,%d", -2, -1)
 			return
 		}
 
