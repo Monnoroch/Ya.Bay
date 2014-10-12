@@ -222,7 +222,12 @@ var app = {
             $( "#menu" ).panel( "close" );
         })
         $("#login").on("click",function(){
-            window.open("./api.html", '_system');
+            var ref = window.open("./api.html", '_system');
+            ref.addEventListener('loadstop', function(event) {        
+                if (event.url.match("yamoney")) {
+                    ref.close();
+                }
+            });
         })
         $(document).on("focusout", "#search-input",function(){
             $("#main-title").show();
