@@ -30,7 +30,7 @@ function createItemPage(id) {
 	var cont = $("<div>", {class: "b-item-page"});
 	var item = getItemById(id);
 
-	var start_time = 0, end_time = -1;
+	var start_time = 0, end_time = -1000;
 
 	// jQuery.ajax({
  //         url: "https://msymbolics.com:13001/yamoney_create?item=1&id=41001575496082&time=10",
@@ -56,7 +56,7 @@ function createItemPage(id) {
             alert(start_time);
             alert(end_time);
 
-         	if( start_time === 0 && end_time === -1) {
+         	if( start_time === 0 && end_time === -1000) {
          		$("canvas").hide();
          	} else {
          		$("canvas").show();

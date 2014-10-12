@@ -190,7 +190,7 @@ var app = {
                         end_time = item_obj.endTime;
 
                     function clock() {
-                        if( start_time == 0 && end_time == -1) return;
+                        if( start_time == 0 && end_time == -1000) return;
 
                         var $s = $("#item .knob-container");
 
