@@ -53,6 +53,9 @@ function createItemPage(id) {
          	start_time = (times[0]) * 1000;
          	end_time = (times[1] - 1) * 1000;
 
+            alert(start_time);
+            alert(end_time);
+
          	if( start_time === 0 && end_time === -1) {
          		$("canvas").hide();
          	} else {
