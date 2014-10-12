@@ -75,8 +75,8 @@ func startAuction(item string) {
 		"amount": {fmt.Sprintf("%v", amount)},
 		"message": {"Apple iPhone 5S 16Gb продан!"},
 		"comment": {"Apple iPhone 5S 16Gb продан за " + fmt.Sprintf("%v", amount) + " рублей пользователю " + bidderId + "."},
-		// "test_payment": {"true"},
-		// "test_result": {"success"},
+		"test_payment": {"true"},
+		"test_result": {"success"},
 	}
 
 	req, err := http.NewRequest("POST", "https://money.yandex.ru/api/request-payment", strings.NewReader(reqData.Encode()))
@@ -102,6 +102,8 @@ func startAuction(item string) {
 		return
 	}
 
+	fmt.Println("!!! 1  ", string(buf))
+
 	var res requestPaymentRes
 	if err := json.Unmarshal(buf, &res); err != nil {
 		fmt.Println("Error:", err)
@@ -112,12 +114,10 @@ func startAuction(item string) {
 		return
 	}
 
-	fmt.Println("!!! 1  ", string(buf))
-
 	reqDataP := url.Values{
 		"request_id": {res.ReqId},
-		// "test_payment": {"true"},
-		// "test_result": {"success"},
+		"test_payment": {"true"},
+		"test_result": {"success"},
 	}
 
 	reqP, err := http.NewRequest("POST", "https://money.yandex.ru/api/process-payment", strings.NewReader(reqDataP.Encode()))
