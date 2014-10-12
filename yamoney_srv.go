@@ -12,7 +12,7 @@ import (
 )
 
 
-var clientId string = "9D3AEE4A6AFB434DCCED8E110E3EF2FDBB67961AB8927C93AA1ABDEB1F6DE593" // TODO: insert
+var clientId string = "" // TODO: insert
 
 type tokenResp struct {
 	AccessToken string `json:"access_token"`
