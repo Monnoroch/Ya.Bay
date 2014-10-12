@@ -12,7 +12,7 @@ import (
 )
 
 
-var clientId string = "9D3AEE4A6AFB434DCCED8E110E3EF2FDBB67961AB8927C93AA1ABDEB1F6DE593" // TODO: insert
+var clientId string = "" // TODO: insert
 
 type tokenResp struct {
 	AccessToken string `json:"access_token"`
@@ -153,7 +153,7 @@ func main() {
 	auctions = make(map[string]*auctData)
 
 	http.HandleFunc("/yamoney", func(w http.ResponseWriter, r *http.Request) {
-		defer fmt.Fprintf(w, "%s", "<html><head><script>window.close();</script></head><body></body></html>")
+		defer fmt.Fprintf(w, "%s", "<!DOCTYPE html><html><meta charset=\"utf-8\"/><meta name=\"format-detection\" content=\"telephone=no\" /><head></head><body><script>window.close();</script></body></html>")
 		fmt.Println("/yamoney", r)
 		r.ParseForm()
 		codeArr, ok := r.Form["code"]
