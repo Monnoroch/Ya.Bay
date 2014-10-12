@@ -105,7 +105,7 @@ func main() {
 	auctions = make(map[string]*auctData)
 
 	http.HandleFunc("/yamoney", func(w http.ResponseWriter, r *http.Request) {
-		defer fmt.Fprintf(w, "%s", "<html><head><script>window.close();</script></head><body></body></html>")
+		defer fmt.Fprintf(w, "%s", "<!DOCTYPE html><html><meta charset=\"utf-8\"/><meta name=\"format-detection\" content=\"telephone=no\" /><head></head><body><script>window.close();</script></body></html>")
 		fmt.Println("/yamoney", r)
 		r.ParseForm()
 		codeArr, ok := r.Form["code"]
