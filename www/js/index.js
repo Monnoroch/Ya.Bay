@@ -195,8 +195,12 @@ var app = {
                             return;
                         } else if(start_time == -2000 && end_time == -2000) {
                             $("#biddable").show();
+                            $("canvas").hide();
                             return;
-                        } else $("#biddable").show();
+                        } else {
+                            $("#biddable").show();
+                            $("canvas").show();
+                        }
                         var $s = $("#item .knob-container");
 
                         var cur_time = Date.now();
