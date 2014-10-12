@@ -50,14 +50,24 @@ function createItemPage(id) {
          url: "https://msymbolics.com:13001/yamoney_time?item=" + id,
          success: function(result) {
          	var times = result.split(",");
-         	start_time = (times[0] - 1) * 1000;
+         	start_time = (times[0]) * 1000;
          	end_time = (times[1] - 1) * 1000;
+
+         	if( start_time === 0 && end_time === 0) {
+         		$("#biddable").hide();
+         	} else {
+         		$("#biddable").show();
+         	}
+         },
+         error: function(){
+         	$("#biddable").hide();
          },
          async:   false
     });
 
     cont.append(
                 $("<div>",{class:"b-model-image"}).append($("<img src=" + item.img_big + ">")),
+            $("<div>", {id: "biddable"}).append(   
                 $('<input data-min="' + 0 + '" readonly=true data-max="' + (end_time - start_time) + '" data-displayInput=true data-width="100" data-height="100" data-thickness=".3" class="knob-container">').knob({format: function(v){
 					// create a new javascript Date object based on the timestamp
 					// multiplied by 1000 so that the argument is in milliseconds, not seconds
@@ -73,7 +83,7 @@ function createItemPage(id) {
 					return formattedTime;
                 }}),
                 $("<input>", { type:"text", name:"bid", id:"bid"}).val(0.9),
-                '<a href="#" id="bid-btn" class="ui-btn ui-alt-icon ui-nodisc-icon">Поставить</a>',
+                '<a href="#" id="bid-btn" class="ui-btn ui-alt-icon ui-nodisc-icon">Поставить</a>'),
             	$("<div>", { class: "b-techspec"}).text(item.text));
 
     return {startTime: start_time, endTime: end_time, cont: cont};

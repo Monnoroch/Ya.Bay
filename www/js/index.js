@@ -189,6 +189,10 @@ var app = {
 
                         if( end_time - cur_time > 0)
                             setTimeout(clock, 1000);
+                        else {
+                            $("#biddable").empty();
+                            $("#biddable").text("Вы победили!");
+                        }
                     }
 
                     clock();
