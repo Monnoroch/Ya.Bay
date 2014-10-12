@@ -193,10 +193,10 @@ var app = {
                         if( start_time == 0 && end_time == -1000) {
                             $("#biddable").hide();
                             return;
-                        };
-
-                        $("#biddable").show();
-
+                        } else if(start_time == -2000 && end_time == -2000) {
+                            $("#biddable").show();
+                            return;
+                        } else $("#biddable").show();
                         var $s = $("#item .knob-container");
 
                         var cur_time = Date.now();
