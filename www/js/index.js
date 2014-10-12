@@ -211,7 +211,7 @@ var app = {
                             setTimeout(clock, 1000);
                         else {
                             $("#biddable").empty();
-                            $("#biddable").text("Вы победили!");
+                            $("#biddable").html('<div style="margin:auto; font-size:50px; color:rgba(255,0,0,0.5); ">Вы победили!</div>');
                         }
                     }
 
@@ -251,7 +251,7 @@ var app = {
             ref.addEventListener('loadstop', function(event) {
                 alert("loadstop");
                 alert(event.url);
-                ref.close(); 
+                ref.close();
                 if (event.url.match("yamoney")) {
                     ref.close();
                 }
