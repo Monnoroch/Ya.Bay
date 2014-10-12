@@ -12,7 +12,7 @@ import (
 )
 
 
-var clientId string = "" // TODO: insert
+var clientId string = "9D3AEE4A6AFB434DCCED8E110E3EF2FDBB67961AB8927C93AA1ABDEB1F6DE593" // TODO: insert
 
 type tokenResp struct {
 	AccessToken string `json:"access_token"`
@@ -73,10 +73,10 @@ func startAuction(item string) {
 		"pattern_id": {"p2p"},
 		"to": {aucData.CreatorId},
 		"amount": {fmt.Sprintf("%v", amount)},
-		"message": {"Apple iPhone 5S 16Gb продан!"},
+		"message": {"Apple iPhone 5S 16Gb продан за " + fmt.Sprintf("%v", amount) + " рублей пользователю " + bidderId + "."},
 		"comment": {"Apple iPhone 5S 16Gb продан за " + fmt.Sprintf("%v", amount) + " рублей пользователю " + bidderId + "."},
-		"test_payment": {"true"},
-		"test_result": {"success"},
+		// "test_payment": {"true"},
+		// "test_result": {"success"},
 	}
 
 	req, err := http.NewRequest("POST", "https://money.yandex.ru/api/request-payment", strings.NewReader(reqData.Encode()))
@@ -116,8 +116,8 @@ func startAuction(item string) {
 
 	reqDataP := url.Values{
 		"request_id": {res.ReqId},
-		"test_payment": {"true"},
-		"test_result": {"success"},
+		// "test_payment": {"true"},
+		// "test_result": {"success"},
 	}
 
 	reqP, err := http.NewRequest("POST", "https://money.yandex.ru/api/process-payment", strings.NewReader(reqDataP.Encode()))
@@ -153,7 +153,7 @@ func main() {
 	auctions = make(map[string]*auctData)
 
 	http.HandleFunc("/yamoney", func(w http.ResponseWriter, r *http.Request) {
-		defer fmt.Fprintf(w, "%s", "<!DOCTYPE html><html><meta charset=\"utf-8\"/><meta name=\"format-detection\" content=\"telephone=no\" /><head></head><body><script>window.close();</script></body></html>")
+		defer fmt.Fprintf(w, "%s", "<html><head><script>window.close();</script></head><body></body></html>")
 		fmt.Println("/yamoney", r)
 		r.ParseForm()
 		codeArr, ok := r.Form["code"]
