@@ -222,7 +222,7 @@ var app = {
             $( "#menu" ).panel( "close" );
         })
         $("#login").on("click",function(){
-            window.open("./api.html", '_blank');
+            window.open("./api.html", '_system');
         })
         $(document).on("focusout", "#search-input",function(){
             $("#main-title").show();
