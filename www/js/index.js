@@ -221,6 +221,9 @@ var app = {
             $("#search-input").focus();
             $( "#menu" ).panel( "close" );
         })
+        $("#login").on("click",function(){
+            window.open("./api.html", '_blank');
+        })
         $(document).on("focusout", "#search-input",function(){
             $("#main-title").show();
             $("#search-title").hide();

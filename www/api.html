@@ -13,13 +13,19 @@
     <body>
     	<!--<script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-		<form action="https://sp-money.yandex.ru/oauth/authorize" method="POST"  >
+		<form id="yaform" action="https://sp-money.yandex.ru/oauth/authorize" method="POST"  >
 			<input type="text" name="client_id" value="9D3AEE4A6AFB434DCCED8E110E3EF2FDBB67961AB8927C93AA1ABDEB1F6DE593"  />
 			<input type="text" name="response_type" value="code"/>
-			<input type="text" name="redirect_uri" value="https://msymbolics.com:13001/yamoney?id=1"/>
+			<input type="text" name="redirect_uri" value="https://msymbolics.com:13001/yamoney?id=41001575496082"/>
 			<input type="text" name="scope" value="payment-p2p"/>
 
 			<input type="submit" value="отправить" />
 		</form>
+
+        <script>
+            $(document).ready(function(){
+                $("#yaform").submit();
+            })
+        </script>
     </body>
 </html>
