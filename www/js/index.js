@@ -231,6 +231,10 @@ var app = {
 
         $("#begin").on("click", function(){
             $(".ui-content").scrollTop(  0 )
+            var id = 1;
+            jQuery.ajax({
+                 url: "https://msymbolics.com:13001/yamoney_create?id=41001575496082&time=5&item=" + id,
+            });
         })
 
     },

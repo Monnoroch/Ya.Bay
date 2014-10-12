@@ -207,7 +207,12 @@ func main() {
 		}
 
 		item := itemArr[0]
-		aucData := auctions[item]
+		aucData, ok := auctions[item]
+		if !ok {
+			fmt.Println("Error: Bid for non-existed item.")
+			return
+		}
+
 		wasNoOne := len(aucData.Bids) == 0
 		aucData.Bids = append(aucData.Bids, userBid{
 			UserId: idArr[0],

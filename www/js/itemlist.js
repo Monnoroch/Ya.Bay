@@ -32,12 +32,12 @@ function createItemPage(id) {
 
 	var start_time, end_time;
 
-	jQuery.ajax({
-         url: "https://msymbolics.com:13001/yamoney_create?item=1&id=41001575496082&time=10",
-         success: function(result) {
-         },
-         async:   false
-    });
+	// jQuery.ajax({
+ //         url: "https://msymbolics.com:13001/yamoney_create?item=1&id=41001575496082&time=10",
+ //         success: function(result) {
+ //         },
+ //         async:   false
+ //    });
 
     jQuery.ajax({
          url: "https://msymbolics.com:13001/yamoney_bid?item=1&id=410012119774823&amount=0.1",
@@ -50,8 +50,8 @@ function createItemPage(id) {
          url: "https://msymbolics.com:13001/yamoney_time?item=" + id,
          success: function(result) {
          	var times = result.split(",");
-         	start_time = times[0] * 1000;
-         	end_time = times[1] * 1000;
+         	start_time = (times[0] - 1) * 1000;
+         	end_time = (times[1] - 1) * 1000;
          },
          async:   false
     });
